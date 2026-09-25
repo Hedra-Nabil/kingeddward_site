@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "flaticon_save_us";
+    src: url("../fonts/flaticon_save_usaa83.html?2f0624678fb5e8dd15876c2962b64af9") format("truetype"),
+url("../fonts/flaticon_save_usaa83-2.html?2f0624678fb5e8dd15876c2962b64af9") format("woff"),
+url("../fonts/flaticon_save_usaa83-3.html?2f0624678fb5e8dd15876c2962b64af9") format("woff2"),
+url("../fonts/flaticon_save_usaa83-4.html?2f0624678fb5e8dd15876c2962b64af9#iefix") format("embedded-opentype"),
+url("../fonts/flaticon_save_usaa83-5.html?2f0624678fb5e8dd15876c2962b64af9#flaticon_save_us") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_save_us !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-facebook-app-symbol:before {
+    content: "\f101";
+}
+.flaticon-twitter:before {
+    content: "\f102";
+}
+.flaticon-linkedin:before {
+    content: "\f103";
+}
+.flaticon-pinterest:before {
+    content: "\f104";
+}
+.flaticon-phone-call:before {
+    content: "\f105";
+}
+.flaticon-email:before {
+    content: "\f106";
+}
+.flaticon-location:before {
+    content: "\f107";
+}
+.flaticon-share:before {
+    content: "\f108";
+}
+.flaticon-right-arrow:before {
+    content: "\f109";
+}
+.flaticon-left-arrow:before {
+    content: "\f10a";
+}
+.flaticon-quote:before {
+    content: "\f10b";
+}
+.flaticon-user:before {
+    content: "\f10c";
+}
+.flaticon-bubble-chat:before {
+    content: "\f10d";
+}
+.flaticon-arrow-right:before {
+    content: "\f10e";
+}
+.flaticon-search:before {
+    content: "\f10f";
+}
+.flaticon-search-interface-symbol:before {
+    content: "\f110";
+}
+.flaticon-time:before {
+    content: "\f111";
+}
+.flaticon-pin:before {
+    content: "\f112";
+}
+.flaticon-maps-and-flags:before {
+    content: "\f113";
+}
+.flaticon-add:before {
+    content: "\f114";
+}
+.flaticon-minus:before {
+    content: "\f115";
+}
+.flaticon-handshake:before {
+    content: "\f116";
+}
+.flaticon-drop:before {
+    content: "\f117";
+}
+.flaticon-college-graduation:before {
+    content: "\f118";
+}
+.flaticon-salad:before {
+    content: "\f119";
+}
+.flaticon-play-button-arrowhead:before {
+    content: "\f11a";
+}
+.flaticon-plus:before {
+    content: "\f11b";
+}
+.flaticon-left-arrow-1:before {
+    content: "\f11c";
+}
+.flaticon-right-arrow-1:before {
+    content: "\f11d";
+}
+.flaticon-angle-right:before {
+    content: "\f11e";
+}
+.flaticon-angle-left:before {
+    content: "\f11f";
+}
+.flaticon-down:before {
+    content: "\f120";
+}

@@ -1,0 +1,78 @@
+:root {
+  --theme-color: #00715D;
+  --primary-color:#25283A;
+  --secondary-color: #F65024;
+  --white-color:#FFFFFF;
+  --base-color:#6F7775;
+
+
+  --primary-font: 'Yeseva One';
+  --secondary-font: 'Poppins';
+  --subtitle-font: 'Caveat';
+}
+
+/* template-color */
+
+.scroll-top{
+  background: var(--theme-color);
+}
+
+.home-two-header .main-menu .navigation > li > a{
+  color: #094174;
+}
+
+.home-two-header .sticky-header .main-menu .navigation > li > a{
+  color: #094174;
+}
+
+.home-two-header .sticky-header .main-menu .navigation > li > a:hover{
+  color: #FE7524 !important;
+}
+
+.main-menu .navigation > li > a:hover,
+.main-menu .navigation > li > ul > li > a:hover,
+.main-menu .navigation > li > .megamenu li > a:hover{
+	color: #FE7524 !important;
+}
+
+.main-menu .navigation > li > ul > li > a,
+.main-menu .navigation > li > .megamenu li > a{
+  color: #094174;
+}
+
+.main-menu .navigation > li > ul > li > ul > li > a{
+  color:  #094174;
+}
+
+
+.home-two-header .main-menu .navigation > li > a:hover{
+	color: #FE7524 !important;
+}
+
+.main-menu .navigation > li > .active{
+  position: relative;
+  color: #FE7524;
+}
+
+.main-menu .navigation > li > ul > li .active{
+  position: relative;
+  color: #FE7524;
+}
+
+.home-two-header .main-menu .navigation > li > .active{
+  position: relative;
+  color: #FE7524;
+}
+
+.main-menu .navigation > li > ul > li > ul > li > a:hover{
+  color: #FE7524;
+}
+
+.sticky-header{
+  background: var(--white-color);
+}
+.main-menu .navigation > li > ul > li:hover > a, 
+.main-menu .navigation > li > .megamenu li:hover > a,
+.main-header .sticky-header .main-menu .navigation > li ul li a:hover{
+  color: #FE7524 !important;
+}

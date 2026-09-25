@@ -1,0 +1,10 @@
+Crawl results for kingedwardtravel.com
+============================================================
+index.html -> final=https://www.kingedwardtravel.com/index.html size=3725 ctype=text/html saved=index.html err=None
+Tour_Packages.html -> final=https://www.kingedwardtravel.com/Tour_Packages.html size=5709 ctype=text/html saved=Tour_Packages.html err=None
+Nile_Cruises.html -> final=https://www.kingedwardtravel.com/Nile_Cruises.html size=6504 ctype=text/html saved=Nile_Cruises.html err=None
+Local_Packages.html -> final=https://www.kingedwardtravel.com/Local_Packages.html size=4333 ctype=text/html saved=Local_Packages.html err=None
+About_us.html -> final=https://www.kingedwardtravel.com/About_us.html size=3313 ctype=text/html saved=About_us.html err=None
+contact_us.html -> final=https://www.kingedwardtravel.com/contact_us.html size=4331 ctype=text/html saved=contact_us.html err=None
+Transportation.html -> final=https://www.kingedwardtravel.com/Transportation.html size=3732 ctype=text/html saved=Transportation.html err=None
+style.css -> final=https://www.kingedwardtravel.com/style.css size=4118 ctype=text/css saved=style.css err=None
