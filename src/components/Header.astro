@@ -46,7 +46,17 @@ const { headerClass = 'main-header style-one', navActive = 'home' } = Astro.prop
                                             <li><a href='/destination-details'>Destination Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class={navActive === 'private-transfer' ? 'active' : undefined} href='/private-transfer'>Private Transfer</a></li>
+                                    <li class="dropdown"><a class={navActive === 'private-transfer' ? 'active' : undefined} href='/private-transfer'>Private Transfer </a>
+                                        <ul>
+                                            <li><a href='/private-transfer'>All Egypt Transfers</a></li>
+                                            <li><a href='/transfers/cairo-airport-transfer'>Cairo Airport (CAI)</a></li>
+                                            <li><a href='/transfers/sphinx-airport-transfer'>Sphinx Airport (SPX)</a></li>
+                                            <li><a href='/transfers/hurghada-airport-transfer'>Hurghada Airport (HRG)</a></li>
+                                            <li><a href='/transfers/sharm-el-sheikh-airport-transfer'>Sharm Airport (SSH)</a></li>
+                                            <li><a href='/transfers/luxor-airport-transfer'>Luxor Airport (LXR)</a></li>
+                                            <li><a href='/transfers/aswan-airport-transfer'>Aswan Airport (ASW)</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a class={navActive === 'gallery' ? 'active' : undefined} href='/gallery'>Gallery</a></li>
                                     <li><a class={navActive === 'faq' ? 'active' : undefined} href='/faq'>FAQ</a></li>
                                     <li><a class={navActive === 'contact' ? 'active' : undefined} href='/contact'>Contact </a></li>   

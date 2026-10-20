@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'Aswan City Nile Cruise Piers & Corniche Docks', time: '25–35 mins', distance: '21 km', type: 'Private Shuttle' },
+  { name: 'Sofitel Legend Old Cataract Hotel', time: '25–30 mins', distance: '19 km', type: 'Executive Ride' },
+  { name: 'Philae Temple Marina & Agilkia Island Boat Dock', time: '15–20 mins', distance: '12 km', type: 'Private Car' },
+  { name: 'Aswan High Dam & Lake Nasser Cruise Pier', time: '15–20 mins', distance: '14 km', type: 'Cruise Terminal Shuttle' },
+  { name: 'Gharb Soheil Nubian Village Boat Piers', time: '20–25 mins', distance: '16 km', type: 'Private Van' },
+  { name: 'Abu Simbel Sun Temples Direct Highway Transfer', time: '3–3.5 hours', distance: '280 km', type: 'Private Desert Highway' },
+];
+
+const faqs = [
+  {
+    q: 'How far is Aswan Airport (ASW) from the Nile cruise docks and Old Cataract Hotel?',
+    a: 'Aswan Airport is located south of the city, approximately 19–22 km away. The drive through scenic desert roads takes roughly 25 to 30 minutes in our air-conditioned private vehicles.',
+  },
+  {
+    q: 'Do you offer private overland road transfers from Aswan to Abu Simbel?',
+    a: 'Yes! We run daily private overland transfers from Aswan to Abu Simbel in modern air-conditioned vans and minibuses, perfectly timed for the sunrise or morning visits before returning to Aswan or your cruise ship.',
+  },
+  {
+    q: 'Can the driver assist us to our boat on Lake Nasser or Nile Cruise?',
+    a: 'Yes, our local Aswan dispatchers and drivers assist with your luggage all the way to the boat gangway or hotel front desk.',
+  },
+  {
+    q: 'Where will our driver meet us at Aswan Airport?',
+    a: 'Your driver will be waiting directly at the exit of the arrivals hall holding a sign with your name. Aswan Airport is small and easy to navigate.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Aswan International Airport"
+  iata="ASW"
+  city="Aswan / Nubia"
+  headline="Private Transfers to Nile Cruises, Old Cataract & Abu Simbel"
+  description="Private transfers from Aswan Airport (ASW) to Nile cruise piers, Old Cataract Hotel, Philae Temple, and Abu Simbel. Reliable Upper Egypt chauffeur service, modern A/C fleet, fixed rates."
+  keywords="Aswan airport transfer, ASW airport taxi, Aswan airport to Nile cruise, Aswan airport to Old Cataract, Aswan to Abu Simbel private car, King Edward Travel Aswan"
+  heroImage="/assets/images/egypt/aswan-nile.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      At Egypt’s southern frontier, <strong>Aswan</strong> is famous for golden Nile sunsets, Nubian hospitality, and the starting point for luxury Nile and Lake Nasser voyages. Arriving at <strong>Aswan International Airport (ASW)</strong> with a pre-booked King Edward Travel chauffeur gives you instant peace of mind.
+    </p>
+    <p>
+      We specialize in transfers to the legendary <strong>Sofitel Legend Old Cataract</strong>, all <strong>Nile cruise piers</strong> along the Corniche, the <strong>Philae Temple boat launch</strong>, and long-distance private highway shuttles to the monumental temples of <strong>Abu Simbel</strong>.
+    </p>
+  </div>
+</AirportTransferLayout>

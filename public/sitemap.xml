@@ -1,62 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.kingedwardtravel.com/</loc>
+    <loc>https://kingedwardtravel.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://kingedwardtravel.com/private-transfer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/tour-package</loc>
+    <loc>https://kingedwardtravel.com/transfers/cairo-airport-transfer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/tour-details</loc>
+    <loc>https://kingedwardtravel.com/transfers/sphinx-airport-transfer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/destination</loc>
+    <loc>https://kingedwardtravel.com/transfers/hurghada-airport-transfer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/destination-details</loc>
+    <loc>https://kingedwardtravel.com/transfers/sharm-el-sheikh-airport-transfer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/transfers/luxor-airport-transfer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/transfers/aswan-airport-transfer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/gallery</loc>
+    <loc>https://kingedwardtravel.com/tour-package</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/tour-details</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/destination</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/destination-details</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kingedwardtravel.com/gallery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/faq</loc>
+    <loc>https://kingedwardtravel.com/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/blog</loc>
+    <loc>https://kingedwardtravel.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/blog-details</loc>
+    <loc>https://kingedwardtravel.com/blog-details</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/tour-guide</loc>
+    <loc>https://kingedwardtravel.com/tour-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kingedwardtravel.com/contact</loc>
+    <loc>https://kingedwardtravel.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

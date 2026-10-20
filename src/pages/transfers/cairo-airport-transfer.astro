@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'Downtown Cairo / Tahrir Hotels (Ritz, Nile Kempinski)', time: '40–55 mins', distance: '22 km', type: 'Private Sedan / Van' },
+  { name: 'Giza Pyramids & Grand Egyptian Museum (GEM)', time: '60–75 mins', distance: '42 km', type: 'Private Sedan / Van' },
+  { name: 'New Cairo / 5th Settlement / AUC Area', time: '20–30 mins', distance: '16 km', type: 'Executive Ride' },
+  { name: 'Heliopolis / Nasr City Hotels', time: '15–20 mins', distance: '8 km', type: 'Private Sedan' },
+  { name: 'Alexandria City & Corniche Direct Transfer', time: '2.5–3 hours', distance: '220 km', type: 'Intercity Highway' },
+  { name: 'Ain Sokhna Red Sea Resorts', time: '80–95 mins', distance: '125 km', type: 'Direct Beach Shuttle' },
+];
+
+const faqs = [
+  {
+    q: 'Where will my driver meet me at Cairo International Airport (CAI)?',
+    a: 'For Terminals 1, 2, and 3, your driver waits directly outside the customs baggage exit doors in the arrivals greeting area holding an official sign with your name. You will also receive the chauffeur phone number and vehicle details via WhatsApp before landing.',
+  },
+  {
+    q: 'What if my flight into Cairo is delayed or rerouted?',
+    a: 'Our operations center monitors real-time radar for every flight into Cairo. We adjust pickup times automatically without any penalty or waiting charges for flight delays.',
+  },
+  {
+    q: 'Can we book a private van for excess luggage or golf bags?',
+    a: 'Yes. In the booking widget, choose your passenger and bag count. Options include Hyundai H1 vans (up to 7 passengers with luggage) and Toyota Hiace vans (up to 12 passengers) equipped with high-capacity luggage space.',
+  },
+  {
+    q: 'Can I book a transfer from Cairo Airport directly to Alexandria or Sokhna?',
+    a: 'Absolutely. We provide direct intercity highway transfers from CAI directly to any hotel or residence in Alexandria, Ain Sokhna, El Alamein, Fayoum, and Suez.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Cairo International Airport"
+  iata="CAI"
+  city="Cairo"
+  headline="Premium Cairo Airport Chauffeur & Private Hotel Transfers"
+  description="Book 24/7 private Cairo International Airport (CAI) transfers to Downtown, Giza Pyramids, New Cairo, and Alexandria. Real-time flight tracking, 60-min free waiting, fixed rates."
+  keywords="Cairo airport transfer, CAI private taxi, Cairo airport to Giza Pyramids, Cairo airport to New Cairo, Cairo airport limousine, King Edward Travel Cairo transfer"
+  heroImage="/assets/images/egypt/cairo-citadel.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      Avoid long taxi negotiations, chaotic arrival halls, and currency exchange stress at <strong>Cairo International Airport (CAI)</strong>. With King Edward Travel and our dedicated transport fleet at <strong>EgyptLimo</strong>, your private chauffeur greets you the moment you clear customs and guides you straight to your air-conditioned vehicle.
+    </p>
+    <p>
+      Whether you are heading to a Nile-side hotel in Downtown Cairo, the Grand Egyptian Museum (GEM) in Giza, or a corporate summit in New Cairo, our drivers follow the safest and fastest expressways (including the Ring Road and Tahya Misr Corridor).
+    </p>
+  </div>
+</AirportTransferLayout>

@@ -25,6 +25,7 @@ export interface Props {
   mainHeading?: string;
   subHeading?: string;
   showBreadcrumb?: boolean;
+  noindex?: boolean;
   extraJsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
@@ -40,10 +41,11 @@ const {
   mainHeading,
   subHeading,
   showBreadcrumb = true,
+  noindex = false,
   extraJsonLd,
 } = Astro.props;
 
-const cleanPath = canonicalPath === '/' ? '' : canonicalPath.replace(/\.html$/, '');
+const cleanPath = canonicalPath === '/' ? '' : canonicalPath.replace(/\.html$/, '').replace(/\/$/, '');
 const canonicalUrl = `${SITE_URL}${cleanPath || '/'}`;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
 
@@ -70,7 +72,7 @@ const travelAgencySchema = {
     '@type': 'Country',
     name: 'Egypt',
   },
-  AggregateRating: {
+  aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
     reviewCount: '1850',
@@ -112,11 +114,14 @@ const jsonLdPayloads = [
     <meta name="description" content={description}>
     <meta name="keywords" content={keywords}>
     <meta name="author" content="King Edward Travel">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}>
+    <meta name="googlebot" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}>
     <meta name="theme-color" content="#094174">
 
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl}>
+    <link rel="alternate" hreflang="en" href={canonicalUrl}>
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl}>
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:locale" content="en_US">
@@ -141,13 +146,14 @@ const jsonLdPayloads = [
     <!-- Fav Icon -->
     <link rel="icon" href="/assets/images/fav-icon.png" type="image/x-icon">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <!-- Google Fonts Preconnect & Display Swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="/assets/images/egypt/pyramids-giza.jpg" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     <link href="/assets/css/flaticon_save_us.css" rel="stylesheet">  
     <link href="/assets/fonts/flaticon.css" rel="stylesheet">
     <link href="/assets/css/owl.css" rel="stylesheet">
@@ -165,6 +171,52 @@ const jsonLdPayloads = [
     <link href="/assets/css/swiper.min.css" rel="stylesheet">
     <link href="/assets/css/responsive.css" rel="stylesheet">
     <style is:global>
+        /* Fix incorrect aspect ratio & image scaling across all devices */
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        .category-image img {
+          width: auto !important;
+          max-width: 100% !important;
+          height: 45px !important;
+          object-fit: contain !important;
+          margin: 0 auto;
+          display: block;
+        }
+        .video-image img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          border-radius: 20px;
+        }
+        .news-letter-image img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          border-radius: 20px;
+        }
+        .blog-image img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+        }
+        .deals-image img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+        }
+        .destination-image img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+        }
+        .banner-icon1 img, .banner-icon2 img {
+          width: auto !important;
+          height: auto !important;
+          max-width: 100%;
+        }
+
         /* King Edward crown mark is square — override wide-logo slots (layout only, logo untouched) */
         .main-header .logo-box .logo a{width:auto !important;height:auto !important;}
         .main-header .logo-box .logo img{height:62px !important;width:auto !important;max-width:none;}
@@ -298,28 +350,26 @@ const jsonLdPayloads = [
     </div>
 
     <!-- All JavaScript Files-->
-    <script is:inline src="/assets/js/jquery.js"></script>
-    <script is:inline src="/assets/js/popper.min.js"></script>
-    <script is:inline src="/assets/js/bootstrap.min.js"></script>
-    <script is:inline src="/assets/js/fontawesome.min.js"></script>
-    <script is:inline src="/assets/js/all.min.js"></script>
-    <script is:inline src="/assets/js/owl.js"></script>
-    <script is:inline src="/assets/js/wow.js"></script>
-    <script is:inline src="/assets/js/slick.min.js"></script>
-    <script is:inline src="/assets/js/validation.js"></script>
-    <script is:inline src="/assets/js/progresscircle.js"></script>
-    <script is:inline src="/assets/js/scrollbar.js"></script>
-    <script is:inline src="/assets/js/appear.js"></script>
-    <script is:inline src="/assets/js/jquery.nice-select.min.js"></script>
-    <script is:inline src="/assets/js/swiper.min.js"></script>
-    <script is:inline src="/assets/js/parallax.min.js"></script>
-    <script is:inline src="/assets/js/jquery.fancybox.js"></script>
-    <script is:inline src="/assets/js/jquery.magnific-popup.js"></script>
-    <script is:inline src="/assets/js/parallax-scroll.js"></script>
-    <script is:inline src="/assets/js/jquery.paroller.min.js"></script>
+    <script is:inline src="/assets/js/jquery.js" defer></script>
+    <script is:inline src="/assets/js/popper.min.js" defer></script>
+    <script is:inline src="/assets/js/bootstrap.min.js" defer></script>
+    <script is:inline src="/assets/js/owl.js" defer></script>
+    <script is:inline src="/assets/js/wow.js" defer></script>
+    <script is:inline src="/assets/js/slick.min.js" defer></script>
+    <script is:inline src="/assets/js/validation.js" defer></script>
+    <script is:inline src="/assets/js/progresscircle.js" defer></script>
+    <script is:inline src="/assets/js/scrollbar.js" defer></script>
+    <script is:inline src="/assets/js/appear.js" defer></script>
+    <script is:inline src="/assets/js/jquery.nice-select.min.js" defer></script>
+    <script is:inline src="/assets/js/swiper.min.js" defer></script>
+    <script is:inline src="/assets/js/parallax.min.js" defer></script>
+    <script is:inline src="/assets/js/jquery.fancybox.js" defer></script>
+    <script is:inline src="/assets/js/jquery.magnific-popup.js" defer></script>
+    <script is:inline src="/assets/js/parallax-scroll.js" defer></script>
+    <script is:inline src="/assets/js/jquery.paroller.min.js" defer></script>
 
     <!-- main-js -->
-    <script is:inline src="/assets/js/script.js"></script>
+    <script is:inline src="/assets/js/script.js" defer></script>
     <script is:inline>
       (function () {
         const forms = document.querySelectorAll('.ke-quick-inquiry-form');

@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'Hurghada City / Al Mamsha / Marina Promenade', time: '10–20 mins', distance: '8 km', type: 'Private Shuttle' },
+  { name: 'El Gouna Resorts & Marinas (Lagoon hotels)', time: '35–45 mins', distance: '38 km', type: 'Resort Express' },
+  { name: 'Makadi Bay Beach Resorts', time: '30–40 mins', distance: '32 km', type: 'Private Beach Car' },
+  { name: 'Sahl Hasheesh Luxury Bay Resorts', time: '20–25 mins', distance: '22 km', type: 'Private Chauffeur' },
+  { name: 'Soma Bay & Safaga Dive Centers', time: '45–55 mins', distance: '52 km', type: 'Private Van / SUV' },
+  { name: 'Luxor Temples & Nile Cruise Day Trip Transfer', time: '3.5–4 hours', distance: '290 km', type: 'Overland A/C Coach' },
+];
+
+const faqs = [
+  {
+    q: 'How far is Hurghada Airport (HRG) from El Gouna?',
+    a: 'El Gouna is approximately 38 km north of Hurghada Airport. Our private air-conditioned transfer takes 35 to 45 minutes along the smooth coastal highway, delivering you directly to your hotel or villa reception.',
+  },
+  {
+    q: 'Where will my driver wait for me at Hurghada Airport?',
+    a: 'Both Terminal 1 (new international terminal) and Terminal 2 have dedicated meet-and-greet exit gates. Your driver will hold a King Edward Travel / EgyptLimo welcome board with your name.',
+  },
+  {
+    q: 'Do your vehicles carry diving gear and kitesurfing boards?',
+    a: 'Yes! We frequently transfer divers, windsurfers, and kitesurfers to Soma Bay and El Gouna. Please select an SUV or High-Roof Van in the booking form so we allocate adequate cargo capacity.',
+  },
+  {
+    q: 'Can I book a return transfer from my hotel back to HRG airport?',
+    a: 'Yes, roundtrip bookings are supported directly in the widget above with guaranteed on-time pickup from any resort in Hurghada, Makadi, Sahl Hasheesh, or El Gouna.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Hurghada International Airport"
+  iata="HRG"
+  city="Hurghada / Red Sea"
+  headline="Direct Private Transfers to El Gouna, Sahl Hasheesh, Makadi & Soma Bay"
+  description="Private transfers from Hurghada Airport (HRG) to El Gouna, Makadi Bay, Sahl Hasheesh, and Soma Bay. 24/7 Red Sea resort pickups, spacious luggage vans, fixed all-inclusive prices."
+  keywords="Hurghada airport transfer, HRG airport taxi, Hurghada to El Gouna transfer, Hurghada airport to Makadi Bay, Hurghada airport to Sahl Hasheesh, Red Sea private shuttle"
+  heroImage="/assets/images/egypt/hurghada.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      Landing at <strong>Hurghada International Airport (HRG)</strong> for a relaxing beach holiday or diving excursion should be seamless. Skip crowded group tour buses that stop at twenty different hotels before yours — book a direct, private door-to-door transfer with <strong>King Edward Travel &amp; EgyptLimo</strong>.
+    </p>
+    <p>
+      We service all Red Sea destinations: northern lagoons in <strong>El Gouna</strong>, private bays in <strong>Sahl Hasheesh</strong> and <strong>Makadi Bay</strong>, as well as kitesurfing hubs in <strong>Soma Bay</strong> and Safaga.
+    </p>
+  </div>
+</AirportTransferLayout>

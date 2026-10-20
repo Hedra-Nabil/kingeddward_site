@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kingedwardtravel.com/sitemap.xml
+Sitemap: https://kingedwardtravel.com/sitemap.xml

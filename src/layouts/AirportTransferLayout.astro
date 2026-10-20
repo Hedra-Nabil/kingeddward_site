@@ -1,0 +1,460 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+import GroupBand from '../components/GroupBand.astro';
+import { KE_FLEET } from '../data/siteData';
+import {
+  KE_LIMO_NAME,
+  SITE_PHONE_1,
+  SITE_PHONE_2,
+  SITE_EMAIL_INFO,
+} from '../data/siteConfig';
+
+export interface Props {
+  airportName: string;
+  iata: string;
+  city: string;
+  headline: string;
+  description: string;
+  keywords: string;
+  heroImage: string;
+  popularDropoffs: Array<{ name: string; time: string; distance: string; type: string }>;
+  faqs: Array<{ q: string; a: string }>;
+}
+
+const {
+  airportName,
+  iata,
+  city,
+  headline,
+  description,
+  keywords,
+  heroImage = '/assets/images/egypt/limo-airport.jpg',
+  popularDropoffs = [],
+  faqs = [],
+} = Astro.props;
+
+const airportSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `${airportName} (${iata}) Private Airport Transfer`,
+  serviceType: 'Airport Chauffeur & Transfer Service',
+  provider: {
+    '@type': 'TravelAgency',
+    name: 'King Edward Travel',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: city,
+  },
+  description,
+};
+
+const faqSchema = faqs.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+} : null;
+---
+<BaseLayout
+  title={`${airportName} (${iata}) Private Transfer — Direct Hotel & Resort Rides | King Edward Travel`}
+  description={description}
+  keywords={keywords}
+  ogImage={heroImage}
+  headerClass="main-header style-one common-header"
+  navActive="private-transfer"
+  mainHeading={`${airportName} (${iata}) Transfers`}
+  subHeading="Airport Transfer"
+  extraJsonLd={faqSchema ? [airportSchema, faqSchema] : airportSchema}
+>
+  <!-- Top Clean Booking Widget (Highest Prominence) -->
+  <section class="ke-top-widget-bar">
+    <div class="container-fluid px-lg-5">
+      <div class="ke-widget-clean-box">
+        <div class="ke-airport-badge-line">
+          <span><i class="fa-solid fa-plane-arrival"></i> Official Chauffeur Pickup for <strong>{airportName} ({iata})</strong></span>
+          <span><i class="fa-solid fa-clock"></i> 60 Min Free Flight Wait Time</span>
+          <span><i class="fa-solid fa-shield-check"></i> Meet &amp; Greet with Name Sign</span>
+        </div>
+        <BookingWidget
+          targetId={`widget-${iata.toLowerCase()}`}
+          pickup={`${airportName}`}
+          source={`ke_${iata.toLowerCase()}`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview & Highlights -->
+  <section class="home-two-about about-page" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <div class="common-title">
+            <h5>{city} Airport Transfer Specialist</h5>
+            <h3>{headline}</h3>
+          </div>
+          <div class="home-two-about-content">
+            <slot name="overview" />
+          </div>
+
+          <div class="ke-airport-perks">
+            <div class="ke-perk-item">
+              <i class="fa-solid fa-plane-circle-check"></i>
+              <div>
+                <h6>Live Flight Radar</h6>
+                <p>We monitor delays &amp; gate changes automatically.</p>
+              </div>
+            </div>
+            <div class="ke-perk-item">
+              <i class="fa-solid fa-receipt"></i>
+              <div>
+                <h6>All-Inclusive Fixed Rates</h6>
+                <p>Tolls, airport parking &amp; taxes already included.</p>
+              </div>
+            </div>
+            <div class="ke-perk-item">
+              <i class="fa-solid fa-id-card-clip"></i>
+              <div>
+                <h6>Licensed Chauffeurs</h6>
+                <p>Polite, English-speaking, vetted professional drivers.</p>
+              </div>
+            </div>
+            <div class="ke-perk-item">
+              <i class="fa-solid fa-van-shuttle"></i>
+              <div>
+                <h6>Sedans, SUVs &amp; Coaches</h6>
+                <p>From private executive cars to 50-passenger coaches.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="about-right-image about-right-image-top">
+            <img src={heroImage} alt={`${airportName} private transfer vehicle`} style="border-radius: 16px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Routes Table from this airport -->
+  {popularDropoffs.length > 0 && (
+    <section class="category" style="background: #f8fafc; padding-top: 60px; padding-bottom: 60px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="align-title">
+              <h5>Popular Destinations from {iata}</h5>
+              <h3>Transfer Times &amp; Key Routes</h3>
+            </div>
+          </div>
+          <div class="col-lg-10 offset-lg-1">
+            <div class="ke-routes-table-wrap">
+              <table class="table ke-routes-table">
+                <thead>
+                  <tr>
+                    <th>Destination / Area</th>
+                    <th>Average Duration</th>
+                    <th>Approx Distance</th>
+                    <th>Transfer Type</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {popularDropoffs.map((dest) => (
+                    <tr>
+                      <td><strong>{dest.name}</strong></td>
+                      <td><i class="fa-regular fa-clock" style="color: #FE7524; margin-right: 4px;"></i> {dest.time}</td>
+                      <td>{dest.distance}</td>
+                      <td><span class="ke-route-badge">{dest.type}</span></td>
+                      <td><a href={`#widget-${iata.toLowerCase()}`} class="ke-route-btn">Book Now</a></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Fleet Showcase -->
+  <section class="category" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="align-title">
+            <h5>Our Vehicles at {iata}</h5>
+            <h3>Clean, Air-Conditioned King Edward Fleet</h3>
+          </div>
+        </div>
+
+        <div class="col-lg-10 offset-lg-1">
+          <div class="ke-fleet-grid">
+            {KE_FLEET.map((item) => (
+              <div class="ke-fleet-pill">
+                <i class="fa-solid fa-bus-simple"></i>
+                <div>
+                  <strong>{item.bus}</strong>
+                  <span>{item.seats} · A/C Comfort</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Airport Specific FAQs -->
+  {faqs.length > 0 && (
+    <section class="destination-details faq-page" style="padding-top: 50px; padding-bottom: 60px; background: #fafcff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="align-title">
+              <h5>Got Questions?</h5>
+              <h3>{airportName} Transfer FAQ</h3>
+            </div>
+          </div>
+          <div class="col-lg-10 offset-lg-1">
+            <div class="faq-accordion">
+              <div class="accordion" id={`faq-${iata.toLowerCase()}`}>
+                {faqs.map((f, idx) => {
+                  const fi = idx + 1;
+                  const hid = `heading-${iata}-${fi}`;
+                  const cid = `collapse-${iata}-${fi}`;
+                  return (
+                    <div class="accordion-item">
+                      <h4 class="accordion-header" id={hid}>
+                        <button
+                          class={`accordion-button${fi === 1 ? '' : ' collapsed'}`}
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#${cid}`}
+                          aria-expanded={fi === 1 ? 'true' : 'false'}
+                          aria-controls={cid}
+                        >
+                          {f.q}
+                        </button>
+                      </h4>
+                      <div
+                        id={cid}
+                        class={`accordion-collapse collapse${fi === 1 ? ' show' : ''}`}
+                        aria-labelledby={hid}
+                        data-bs-parent={`#faq-${iata.toLowerCase()}`}
+                      >
+                        <div class="accordion-body">{f.a}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Other Egypt Airports Navigation -->
+  <section class="category" style="padding: 40px 0 60px;">
+    <div class="container">
+      <div class="ke-other-airports-bar">
+        <span>Explore Other Egypt Airport Transfers:</span>
+        <div class="ke-other-links">
+          <a href="/transfers/cairo-airport-transfer">Cairo (CAI)</a>
+          <a href="/transfers/sphinx-airport-transfer">Sphinx (SPX)</a>
+          <a href="/transfers/hurghada-airport-transfer">Hurghada (HRG)</a>
+          <a href="/transfers/sharm-el-sheikh-airport-transfer">Sharm El Sheikh (SSH)</a>
+          <a href="/transfers/luxor-airport-transfer">Luxor (LXR)</a>
+          <a href="/transfers/aswan-airport-transfer">Aswan (ASW)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <GroupBand />
+
+  <style>
+    .ke-top-widget-bar {
+      padding: 30px 0 15px;
+      background: #ffffff;
+      position: relative;
+      z-index: 20;
+    }
+    .ke-widget-clean-box {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .ke-airport-badge-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      margin-bottom: 18px;
+      padding: 10px 18px;
+      background: #edf4fa;
+      border-radius: 12px;
+      font-size: 13.5px;
+      color: #094174;
+      font-weight: 600;
+    }
+    .ke-airport-badge-line i {
+      color: #FE7524;
+      margin-right: 5px;
+    }
+    .ke-airport-perks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .ke-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(9, 65, 116, 0.08);
+    }
+    .ke-perk-item i {
+      font-size: 24px;
+      color: #FE7524;
+      margin-top: 3px;
+    }
+    .ke-perk-item h6 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #094174;
+      margin: 0 0 4px 0;
+    }
+    .ke-perk-item p {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.45;
+    }
+    .ke-routes-table-wrap {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow-x: auto;
+      box-shadow: 0 6px 25px rgba(9, 65, 116, 0.05);
+      border: 1px solid rgba(9, 65, 116, 0.08);
+    }
+    .ke-routes-table {
+      margin-bottom: 0;
+      min-width: 650px;
+    }
+    .ke-routes-table th {
+      background: #094174;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 14px 20px;
+      border: none;
+      font-size: 14px;
+    }
+    .ke-routes-table td {
+      padding: 16px 20px;
+      vertical-align: middle;
+      color: #334155;
+      font-size: 14px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .ke-route-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 20px;
+    }
+    .ke-route-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #FE7524;
+      color: #ffffff !important;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .ke-route-btn:hover {
+      background: #e26117;
+    }
+    .ke-fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .ke-fleet-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: #ffffff;
+      border: 1px solid rgba(9, 65, 116, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(9, 65, 116, 0.04);
+    }
+    .ke-fleet-pill i {
+      font-size: 22px;
+      color: #FE7524;
+    }
+    .ke-fleet-pill strong {
+      display: block;
+      color: #094174;
+      font-size: 15px;
+    }
+    .ke-fleet-pill span {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .ke-other-airports-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #f1f5f9;
+      padding: 18px 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #094174;
+    }
+    .ke-other-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ke-other-links a {
+      color: #094174;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 13px;
+      border: 1px solid rgba(9, 65, 116, 0.12);
+      transition: all 0.2s ease;
+    }
+    .ke-other-links a:hover {
+      background: #094174;
+      color: #ffffff;
+    }
+  </style>
+</BaseLayout>

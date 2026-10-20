@@ -4,8 +4,8 @@
 export const SITE_NAME = 'King Edward Travel';
 export const SITE_SLOGAN = 'All for Egypt';
 export const SITE_TAGLINE = 'Welcome to the Land of the Pharaohs';
-export const SITE_DOMAIN = 'www.kingedwardtravel.com';
-export const SITE_URL = 'https://www.kingedwardtravel.com';
+export const SITE_DOMAIN = 'kingedwardtravel.com';
+export const SITE_URL = 'https://kingedwardtravel.com';
 export const SITE_LICENSE = 'Official travel agency — License No. 1311 since 2005';
 export const SITE_FOUNDED = '2005';
 

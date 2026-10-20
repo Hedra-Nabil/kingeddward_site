@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'Sharks Bay & White Knight Beach Resorts', time: '10–15 mins', distance: '6 km', type: 'Private Shuttle' },
+  { name: 'Naama Bay Promenade Hotels & Casino', time: '15–20 mins', distance: '14 km', type: 'Private Sedan' },
+  { name: 'Nabq Bay & Protected Lagoon Hotels', time: '15–20 mins', distance: '12 km', type: 'Private Shuttle' },
+  { name: 'Hadaba / Ras Um Sid (Cliffside resorts)', time: '20–25 mins', distance: '22 km', type: 'Private Car' },
+  { name: 'Dahab Dive Camps & Blue Hole Area', time: '60–75 mins', distance: '90 km', type: 'Sinai Express Van' },
+  { name: 'St. Catherine Monastery & Mount Sinai', time: '2.5–3 hours', distance: '220 km', type: 'Private Mountain Van' },
+];
+
+const faqs = [
+  {
+    q: 'How long is the transfer from Sharm El Sheikh Airport (SSH) to Naama Bay or Nabq?',
+    a: 'Sharm Airport is centrally situated: Sharks Bay is merely 10 minutes away, Nabq Bay is 15 minutes, and Naama Bay is roughly 15 to 20 minutes away via the Peace Road highway.',
+  },
+  {
+    q: 'Do you offer direct transfers from Sharm Airport to Dahab?',
+    a: 'Yes, we provide comfortable private vans and sedans directly from SSH Airport across the scenic Sinai mountain pass to Dahab (approx. 1 hour 15 minutes). All checkpoint paperwork is handled smoothly by our licensed drivers.',
+  },
+  {
+    q: 'Where do I meet my chauffeur at SSH?',
+    a: 'Upon exiting Terminal 1 or Terminal 2 customs doors into the open arrivals hall, our chauffeur will be prominently waiting with your name board.',
+  },
+  {
+    q: 'Can we book a private excursion to Mount Sinai or Ras Mohamed?',
+    a: 'Yes! In addition to airport pickups, King Edward Travel coordinates private day trips and transport to Ras Mohamed National Park, the Blue Hole in Dahab, and sunrise climbs at Mount Sinai.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Sharm El Sheikh International Airport"
+  iata="SSH"
+  city="Sharm El Sheikh / South Sinai"
+  headline="Effortless South Sinai Transfers to Naama Bay, Nabq & Dahab"
+  description="Private transfers from Sharm El Sheikh Airport (SSH) to Naama Bay, Nabq, Hadaba, Ras Mohamed, and Dahab. 24/7 meet & assist, air-conditioned fleet, smooth Sinai highway journeys."
+  keywords="Sharm El Sheikh airport transfer, SSH airport taxi, Sharm airport to Dahab transfer, Sharm airport to Naama Bay, Sharm airport to Nabq Bay, South Sinai private car"
+  heroImage="/assets/images/egypt/sharm.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      Touch down at <strong>Sharm El Sheikh International Airport (SSH)</strong> and enjoy a stress-free transition directly to your Red Sea resort or Sinai dive camp. Our professional drivers navigate the South Sinai highways with ease, ensuring safe and courteous service.
+    </p>
+    <p>
+      From family suites in <strong>Nabq Bay</strong> to beachfront hotels in <strong>Naama Bay</strong>, coral drop-offs in <strong>Ras Um Sid</strong>, or bohemian dive spots in <strong>Dahab</strong>, your private vehicle is waiting the moment your flight lands.
+    </p>
+  </div>
+</AirportTransferLayout>

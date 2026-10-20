@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'Giza Pyramids Plateau & Marriott Mena House', time: '25–35 mins', distance: '28 km', type: 'Private Sedan / Van' },
+  { name: 'Grand Egyptian Museum (GEM) Entrance', time: '20–30 mins', distance: '24 km', type: 'Private Sedan / Van' },
+  { name: '6th of October City / Sheikh Zayed Hotels', time: '15–25 mins', distance: '18 km', type: 'Executive Ride' },
+  { name: 'Smart Village Business Park', time: '12–18 mins', distance: '12 km', type: 'Corporate Chauffeur' },
+  { name: 'Downtown Cairo / Zamalek Island', time: '45–60 mins', distance: '38 km', type: 'Private Sedan' },
+  { name: 'Alexandria Desert Highway Hotels & Resorts', time: '90–120 mins', distance: '160 km', type: 'Intercity Highway' },
+];
+
+const faqs = [
+  {
+    q: 'Why choose Sphinx International Airport (SPX) for Giza and Pyramids?',
+    a: 'Sphinx Airport is located on the Cairo-Alexandria desert corridor, just 25 minutes west of the Pyramids and Grand Egyptian Museum. Landing at SPX cuts 45+ minutes of heavy inner-city traffic compared to Cairo International Airport (CAI).',
+  },
+  {
+    q: 'Where does the driver pick me up at Sphinx Airport?',
+    a: 'SPX is a modern, compact airport. As soon as you exit the single passenger terminal building, your King Edward Travel driver will be holding your name sign in the designated arrivals greeting area.',
+  },
+  {
+    q: 'Do you offer direct day tour transfers from Sphinx Airport?',
+    a: 'Yes! We can pick you up upon landing at Sphinx, transport you with a private Egyptologist guide directly to the Pyramids and Grand Egyptian Museum, and drop you off at your hotel in Cairo or back at the airport later that day.',
+  },
+  {
+    q: 'Are child booster seats available upon request?',
+    a: 'Yes, we provide complimentary infant and child booster seats for private transfers upon request. Please add a note or WhatsApp us with your booking reference.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Sphinx International Airport"
+  iata="SPX"
+  city="Giza / West Cairo"
+  headline="Fastest Gateway Transfers to Giza Pyramids, GEM & Sheikh Zayed"
+  description="Private transfers from Sphinx International Airport (SPX) directly to Giza Pyramids, Grand Egyptian Museum (GEM), Sheikh Zayed, and 6th of October. Fast highway access, fixed rates."
+  keywords="Sphinx airport transfer, SPX airport taxi, Sphinx airport to Giza Pyramids, Sphinx airport to Grand Egyptian Museum, Sphinx airport limousine Egypt, West Cairo transfer"
+  heroImage="/assets/images/egypt/pyramids-giza.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      <strong>Sphinx International Airport (SPX)</strong> is the premier modern gateway for travelers wishing to bypass central Cairo traffic and reach the <strong>Giza Pyramids Plateau</strong>, <strong>Grand Egyptian Museum (GEM)</strong>, and upscale western suburbs like <strong>Sheikh Zayed</strong> and <strong>6th of October</strong> in under 30 minutes.
+    </p>
+    <p>
+      Our private airport transfers at Sphinx operate 24/7 across all domestic and international arrivals. Travel in private, climate-controlled comfort with vetted chauffeurs who know the fastest highway exits.
+    </p>
+  </div>
+</AirportTransferLayout>

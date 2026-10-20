@@ -1,0 +1,51 @@
+---
+import AirportTransferLayout from '../../layouts/AirportTransferLayout.astro';
+
+const popularDropoffs = [
+  { name: 'East Bank Nile Cruise Docks (Karnak to Luxor Port)', time: '15–20 mins', distance: '10 km', type: 'Private Shuttle' },
+  { name: 'Historic Winter Palace & East Bank Hotels', time: '18–25 mins', distance: '12 km', type: 'Private Sedan' },
+  { name: 'Karnak & Luxor Temple Entrances', time: '15–20 mins', distance: '9 km', type: 'Private Tour Ride' },
+  { name: 'West Bank Hotels & Valley of the Kings Docks', time: '35–45 mins', distance: '28 km', type: 'Private Van / Car' },
+  { name: 'Esna Nile Lock & Cruise Docks', time: '55–65 mins', distance: '60 km', type: 'Intercity Shuttle' },
+  { name: 'Aswan Nile Hotels & Cruise Terminals Transfer', time: '3.5–4 hours', distance: '235 km', type: 'Overland Highway' },
+];
+
+const faqs = [
+  {
+    q: 'How does the transfer to my Nile cruise ship work at Luxor Airport (LXR)?',
+    a: 'Nile cruise ships dock across several private piers along the East Bank and near the bridge. Our drivers in Luxor know the exact docking berths for all cruise ships (e.g., Royal Princess, Mövenpick, Sonesta, Steigenberger). Just tell us your boat name and we take you straight to the gangway.',
+  },
+  {
+    q: 'Can the driver take us to our hotel on the West Bank?',
+    a: 'Yes! We drive via the Luxor Nile Bridge directly to any West Bank hotel, guesthouse, or villa (around Medinet Habu or the Colossi of Memnon).',
+  },
+  {
+    q: 'Can we combine our airport transfer with a temple visit or balloon ride?',
+    a: 'Absolutely. King Edward Travel specializes in licensed Egyptologist guides and private transport. You can book an airport arrival that includes immediate sunrise ballooning or a guided tour of Karnak Temple.',
+  },
+  {
+    q: 'Is flight delay coverage included?',
+    a: 'Yes, all domestic flights from Cairo or international charters into Luxor are monitored in real time with complimentary 60 minutes waiting time.',
+  },
+];
+---
+<AirportTransferLayout
+  airportName="Luxor International Airport"
+  iata="LXR"
+  city="Luxor / Upper Egypt"
+  headline="Direct Private Transfers to Nile Cruises, East & West Bank Hotels"
+  description="Private transfers from Luxor International Airport (LXR) to all Nile cruise docks, Sofitel Winter Palace, West Bank, and Karnak. Fast, air-conditioned Upper Egypt chauffeur service."
+  keywords="Luxor airport transfer, LXR airport taxi, Luxor airport to Nile cruise dock, Luxor airport to Winter Palace, Luxor West Bank private transfer, King Edward Luxor transport"
+  heroImage="/assets/images/egypt/karnak.jpg"
+  popularDropoffs={popularDropoffs}
+  faqs={faqs}
+>
+  <div slot="overview">
+    <p>
+      Known as the world’s greatest open-air museum, <strong>Luxor</strong> welcomes hundreds of Nile cruise passengers and cultural travelers every day. Arriving at <strong>Luxor International Airport (LXR)</strong> with <strong>King Edward Travel &amp; EgyptLimo</strong> guarantees you will not have to barter with airport taxi touts in the Upper Egypt sun.
+    </p>
+    <p>
+      We deliver seamless door-to-gangway transfers to all <strong>Nile cruise boats</strong>, the historic <strong>Sofitel Winter Palace</strong>, and quiet retreats on the <strong>West Bank</strong> beneath the Theban Hills.
+    </p>
+  </div>
+</AirportTransferLayout>
