@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { KE_FAQS, KE_TOURS } from '../data/siteData';
+
+const topFaqs = KE_FAQS.slice(0, 3);
+const topTours = KE_TOURS.slice(0, 3);
+---
+<BaseLayout
+  title="Luxor Travel Guide — Karnak, Valley of the Kings & Nile Cruises | King Edward Travel"
+  description="Plan your visit to Luxor, the world's greatest open-air museum: Karnak Temple, Valley of the Kings, Hatshepsut Temple, sunrise hot-air balloons, and 5* Nile cruises."
+  keywords="Luxor travel guide, Karnak Temple tour, Valley of the Kings Egyptologist, Luxor hot air balloon, Luxor to Aswan Nile cruise"
+  ogImage="/assets/images/egypt/karnak.jpg"
+  headerClass="main-header style-one common-header"
+  navActive="tours"
+  mainHeading="Luxor — World’s Greatest Open-Air Museum"
+  subHeading="Destination Details"
+>
+        <!-- destination details -->
+        <section class="destination-details">
+            <div class="service-icon1">
+                <img src="/assets/images/icons/s-1.png" alt="icon">
+            </div>
+            <div class="add-spring">
+                <img src="/assets/images/shape/spring.png" alt="shape">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="destination-details-left-container">
+                            <div class="destination-common-title">
+                                <h4>Visiting Luxor & Karnak</h4>
+                            </div>
+                            <p>No site on earth concentrates 4,000 years of temples and tombs like Luxor. On the East Bank rise Karnak — the largest temple complex ever built — and Luxor Temple glowing at night; across the Nile lie the Valley of the Kings, Hatshepsut’s mortuary temple and the Colossi of Memnon.</p>
+                            <p>Add a sunrise hot-air balloon over the Theban hills, a felucca at sunset and our Egyptologist guides, and Luxor becomes the highlight of every King Edward itinerary — whether on a Nile cruise or an overland tour.</p>
+                            <div class="destination-details-image">
+                                <a href='/destination'><img src="/assets/images/egypt/karnak.jpg" alt="image"></a>
+                            </div>
+
+                            <div class="destination-common-title">
+                                <h4>Luxor With King Edward</h4>
+                            </div>
+                            <p>We run Luxor as day tours from Hurghada, as the heart of every Nile cruise (3, 4 or 7 nights), and as multi-day overland stays. Hotels from boutique to 5* (Old Winter Palace, Steigenberger, Hilton), private A/C transport and licensed guides throughout.</p>
+                            <p>Don’t miss: Karnak’s Hypostyle Hall at opening time, the Valley of the Kings (including Tutankhamun), Hatshepsut Temple at Deir el-Bahari, Luxor Temple by night, and sunrise balloons over the west bank.</p>
+                            <p>Combine Luxor with Cairo’s pyramids, Aswan and Abu Simbel, or the Red Sea — tell us your dates and our tour managers reply with the best offer within 24 hours.</p>
+                            <div class="dd-image-container">
+                                <div class="dd-image-flex">
+                                    <a href='/destination'><img src="/assets/images/egypt/luxor-temple.jpg" alt="image"></a>
+                                </div>
+                                <div class="dd-image-flex">
+                                    <a href='/destination'><img src="/assets/images/egypt/luxor-balloon.jpg" alt="image"></a>
+                                </div>
+                            </div>
+
+                            <div class="destination-common-title">
+                                <h4>Good to Know :</h4>
+                            </div>
+                            <span>Good to know: Luxor is 650 km south of Cairo (1 hr flight, 4 hrs by our A/C coaches from Hurghada). Plan 2–3 days minimum.</span>
+                            <p>October–April brings perfect sightseeing weather (25°C days). Summer visits start at dawn to beat the heat — our guides adjust every itinerary.</p>
+
+                            <div class="destination-common-title">
+                                <h4>View On Map :</h4>
+                            </div>
+                            <div class="destination-map">
+                                <iframe src="https://www.google.com/maps?q=Luxor,Egypt&output=embed" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Luxor map"></iframe>
+                            </div>
+
+                            <div class="faq-accordion">
+                                <div class="accordion" id="accordionExample">
+                                    {topFaqs.map((f, idx) => {
+                                      const fi = idx + 1;
+                                      const hid = `headingK${fi}`;
+                                      const cid = `collapseK${fi}`;
+                                      return (
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id={hid}>
+                                                <button class={`accordion-button${fi === 1 ? '' : ' collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#${cid}`} aria-expanded={fi === 1 ? 'true' : 'false'} aria-controls={cid}>
+                                                    {f.q}
+                                                </button>
+                                            </h4>
+                                            <div id={cid} class={`accordion-collapse collapse${fi === 1 ? ' show' : ''}`} aria-labelledby={hid} data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    {f.a}
+                                                </div>
+                                            </div>
+                                        </div>
+                                      );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div class="destination-common-title">
+                                <h4>Ask About Luxor:</h4>
+                            </div>
+                            <div class="destination-form-container">
+                                <form class="ke-quick-inquiry-form" data-context="Luxor Destination Inquiry">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" placeholder="Your name *" required>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <input type="tel" name="phone" placeholder="Your phone / WhatsApp *" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" name="subject" placeholder="Your subject" class="subject">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="message" placeholder="Write your Question *" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="submit">Send now</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="ke-quick-inquiry-status" style="margin-top:14px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="destination-details-right-container">
+                            <div class="destination-right-search">
+                                <form action="/tour-package" method="get">
+                                  <input type="text" placeholder="Search Egypt tours..." name="q">
+                                  <button type="submit"><i class="flaticon-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="destination-right-title">
+                                <h4>King Edward Tour List</h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="destination-right-list">
+                                {topTours.map((t) => (
+                                <div class="destination-right-list-content">
+                                    <div class="destination-right-list-image">
+                                        <img src={t.img} alt={t.title}>
+                                    </div>
+                                    <div class="destination-right-list-info">
+                                        <a href='/tour-details'>{t.title}</a>
+                                        <ul>
+                                            <li><i class="fa-solid fa-star"></i>{t.rating} </li>
+                                            <li><span>{t.days}</span><h5> On Request</h5> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+
+                            <div class="destination-right-title">
+                                <h4>Travel Categories</h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="destination-category">
+                                <ul>
+                                    <li><div class="check-mark">
+                                            <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?q=Nile%20Cruise'>Luxury Nile Cruises (06)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Cairo'>Cairo &amp; Giza Pyramids (05)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Hurghada'>Red Sea &amp; Sinai (05)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Luxor'>Luxor &amp; Aswan Temples (06)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?q=Holy%20Family'>Holy Family Trail (02)</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="destination-right-title">
+                                <h4>Follow us </h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="home-two-banner-media destination-right-media">
+                                <ul>
+                                    <li><a href="#">FB</a></li>
+                                    <li><a href="#">TW</a></li>
+                                    <li><a href="#">LI</a></li>
+                                    <li><a href="#">IN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- destination details -->
+</BaseLayout>

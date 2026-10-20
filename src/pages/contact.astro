@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  KE_LIMO_URL,
+  KE_LIMO_NAME,
+  SITE_ADDRESS,
+  SITE_PHONE_1,
+  SITE_PHONE_2,
+  SITE_WHATSAPP,
+  SITE_EMAIL_INFO,
+  SITE_EMAIL_SALES,
+  SITE_MAP_EMBED,
+} from '../data/siteConfig';
+---
+<BaseLayout
+  title="Contact King Edward Travel Cairo — Tailor-Made Egypt Tour Quotes | License 1311"
+  description="Contact King Edward Travel at our Cairo main branch for custom Egypt itineraries, 5* Nile cruises, corporate conferences, and private A/C transfers via Egypt Limo."
+  keywords="Contact King Edward Travel, Cairo travel agency phone, book Egypt tour, Egypt Limo airport transfer, custom Egypt itinerary quote"
+  headerClass="main-header style-one common-header"
+  navActive="contact"
+  mainHeading="Plan Your Egypt Journey With Our Cairo Team"
+  subHeading="Contact King Edward Travel"
+>
+        <!-- contact -->
+        <section class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="destination-right-title">
+                            <h4>Let's talk — All for Egypt!</h4>
+                            <p>King Edward Travel (License 1311 since 2005) handles FIT, groups, incentives, conferences and corporate travel across Egypt — plus its own fleet of air-conditioned buses.</p>
+                            <p>Airport pickups, private transfers and shuttles are powered by our own transport company <a href={KE_LIMO_URL} target="_blank" rel="noopener"><strong>{KE_LIMO_NAME}</strong></a>, running a fully integrated booking system.</p>
+                            <p><strong>{SITE_ADDRESS}</strong></p>
+                            <div class="contact-page-info">
+                                <div class="contact-number">
+                                    <a href={`tel:${SITE_PHONE_1.replace(/\s+/g, '')}`} class="contact-number-icon"><i class="flaticon-phone-call"></i></a> 
+                                    <ul>
+                                        <li><h6>Call / WhatsApp us</h6></li>
+                                        <li><a href={`tel:${SITE_PHONE_1.replace(/\s+/g, '')}`}>{SITE_PHONE_1} </a></li>
+                                        <li><a href={`tel:${SITE_PHONE_2.replace(/\s+/g, '')}`}>{SITE_PHONE_2} </a></li>
+                                    </ul>
+                                </div>
+                                <div class="contact-number">
+                                    <a href={`mailto:${SITE_EMAIL_INFO}`} class="contact-number-icon"><i class="flaticon-email"></i></a>
+                                    <ul>
+                                        <li><h6>E-mail Address</h6></li>
+                                        <li><a href={`mailto:${SITE_EMAIL_INFO}`}>{SITE_EMAIL_INFO} </a></li>
+                                        <li><a href={`mailto:${SITE_EMAIL_SALES}`}>{SITE_EMAIL_SALES} </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="destination-right-title">
+                            <h4>Send us a message</h4>
+                            <p>Tell us your dates, group size and dream itinerary (Nile cruise, Cairo + Red Sea, Holy Family Trail…) — our tour managers reply with the best offer.</p>
+                        </div>
+                        <div class="destination-form-container">                            
+                            <form id="ke-contact-form">
+                                <div class="row">
+                                    <div class="col-lg-6 col-12">
+                                        <input type="text" name="name" placeholder="Your name *" required>
+                                    </div>  
+                                    <div class="col-lg-6 col-12">
+                                        <input type="email" name="email" placeholder="Your Email *" required>
+                                    </div>  
+                                    <div class="col-lg-6 col-12">
+                                        <input type="tel" name="phone" placeholder="Your Phone / WhatsApp">
+                                    </div>  
+                                    <div class="col-lg-6 col-12">
+                                        <input type="text" name="subject" placeholder="Your subject">
+                                    </div>  
+                                    <div class="col-12">
+                                        <textarea name="message" placeholder="Write your message *" required></textarea>
+                                    </div>  
+                                    <div class="col-12">
+                                        <div class="check-box-inner">
+                                        <input type="checkbox" id="ke-save-info" name="save_info" value="yes">
+                                        <label for="ke-save-info" style="cursor:pointer;"> Save my name, email, and phone in this browser for the next time I message.</label>
+                                        </div>
+                                    </div>  
+                                    <div class="col-12">
+                                        <button type="submit" class="submit" id="ke-contact-submit">Send message</button>
+                                    </div>  
+                                </div>                                
+                            </form>
+                        </div>                        
+                        <div id="contact-status-alert" style="margin-top:16px;"></div>
+                        <script is:inline>
+                          (function() {
+                            const STORAGE_KEY = 'ke_contact_saved_user';
+                            const form = document.getElementById('ke-contact-form');
+                            const box = document.getElementById('contact-status-alert');
+                            const submitBtn = document.getElementById('ke-contact-submit');
+                            const saveCheckbox = document.getElementById('ke-save-info');
+                            if (!form || !box) return;
+
+                            // Restore saved contact details if available
+                            try {
+                              const raw = localStorage.getItem(STORAGE_KEY);
+                              if (raw) {
+                                const saved = JSON.parse(raw);
+                                if (saved && typeof saved === 'object') {
+                                  if (saved.name && form.elements['name']) form.elements['name'].value = saved.name;
+                                  if (saved.email && form.elements['email']) form.elements['email'].value = saved.email;
+                                  if (saved.phone && form.elements['phone']) form.elements['phone'].value = saved.phone;
+                                  if (saveCheckbox) saveCheckbox.checked = true;
+                                }
+                              }
+                            } catch (err) {}
+
+                            form.addEventListener('submit', function(e) {
+                              e.preventDefault();
+                              const data = new FormData(form);
+                              const name = (data.get('name') || '').toString().trim();
+                              const email = (data.get('email') || '').toString().trim();
+                              const phone = (data.get('phone') || '').toString().trim();
+                              const subject = (data.get('subject') || 'Egypt Tour Inquiry').toString().trim();
+                              const message = (data.get('message') || '').toString().trim();
+
+                              // Save or clear browser storage based on checkbox
+                              try {
+                                if (saveCheckbox && saveCheckbox.checked) {
+                                  localStorage.setItem(STORAGE_KEY, JSON.stringify({ name: name, email: email, phone: phone }));
+                                } else {
+                                  localStorage.removeItem(STORAGE_KEY);
+                                }
+                              } catch (err) {}
+
+                              if (submitBtn) {
+                                submitBtn.disabled = true;
+                                submitBtn.textContent = 'Sending...';
+                              }
+
+                              const summary = [
+                                'Hello King Edward Travel,',
+                                '• Name: ' + name,
+                                '• Email: ' + email,
+                                '• Phone / WhatsApp: ' + (phone || 'N/A'),
+                                '• Subject: ' + subject,
+                                '• Message: ' + message
+                              ].join('\n');
+
+                              const waUrl1 = 'https://wa.me/201094066018?text=' + encodeURIComponent(summary);
+                              const waUrl2 = 'https://wa.me/201223635480?text=' + encodeURIComponent(summary);
+                              const mailtoUrl = 'mailto:info@kingedwardtravel.com?cc=sales@kingedwardtravel.com&subject=' +
+                                encodeURIComponent(subject + ' — ' + name) +
+                                '&body=' + encodeURIComponent(summary);
+
+                              fetch('https://formsubmit.co/ajax/info@kingedwardtravel.com', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                                body: JSON.stringify({
+                                  _subject: 'King Edward Website Inquiry: ' + subject,
+                                  _cc: 'sales@kingedwardtravel.com',
+                                  name: name,
+                                  email: email,
+                                  phone: phone || 'N/A',
+                                  subject: subject,
+                                  message: message
+                                })
+                              }).finally(function() {
+                                if (submitBtn) {
+                                  submitBtn.disabled = false;
+                                  submitBtn.textContent = 'Send message';
+                                }
+                              }).catch(function() {});
+
+                              box.innerHTML =
+                                '<div class="alert alert-success" style="border-radius:10px;padding:18px 20px;border-left:5px solid #FE7524;background:#f8fff9;color:#094174;box-shadow:0 6px 20px rgba(9,65,116,0.08);">' +
+                                '<div style="font-size:17px;font-weight:700;margin-bottom:6px;"><i class="fa-solid fa-circle-check" style="color:#25D366;margin-right:6px;"></i>Thank you, ' + (name || 'Traveler') + '! Your message has been received.</div>' +
+                                '<p style="margin:0 0 12px 0;font-size:14px;color:#495057;">We have forwarded your inquiry (<strong>' + subject + '</strong>) to our Cairo tour managers at <strong>info@kingedwardtravel.com</strong>. For an instant response, you can also send it directly via WhatsApp or Email below:</p>' +
+                                '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+                                  '<a href="' + waUrl1 + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:9px 15px;background:#25D366;color:#fff;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp 1 (+20 10-940-66018)</a>' +
+                                  '<a href="' + waUrl2 + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:9px 15px;background:#1ebe57;color:#fff;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp 2 (+20 12-236-35480)</a>' +
+                                  '<a href="' + mailtoUrl + '" style="display:inline-flex;align-items:center;gap:6px;padding:9px 15px;background:#094174;color:#fff;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;"><i class="fa-regular fa-envelope"></i> Send via Email App</a>' +
+                                '</div>' +
+                                '</div>';
+
+                              // Keep saved fields if checkbox was checked, clear only subject & message
+                              if (form.elements['subject']) form.elements['subject'].value = '';
+                              if (form.elements['message']) form.elements['message'].value = '';
+                              if (!saveCheckbox || !saveCheckbox.checked) {
+                                form.reset();
+                              }
+                              box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            });
+                          })();
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- contact -->
+
+        <!-- contact map -->
+        <div class="contact-map">
+            <iframe src={SITE_MAP_EMBED} style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Edward Travel — Cairo map"></iframe>
+        </div>
+        <!-- contact map -->
+</BaseLayout>

@@ -1,0 +1,394 @@
+---
+import SearchPopup from '../components/SearchPopup.astro';
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Footer from '../components/Footer.astro';
+import {
+  SITE_NAME,
+  SITE_SLOGAN,
+  SITE_URL,
+  SITE_PHONE_1,
+  SITE_EMAIL_INFO,
+  SITE_ADDRESS,
+} from '../data/siteConfig';
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: string;
+  headerClass?: string;
+  navActive?: string;
+  mainHeading?: string;
+  subHeading?: string;
+  showBreadcrumb?: boolean;
+  extraJsonLd?: Record<string, any> | Array<Record<string, any>>;
+}
+
+const {
+  title,
+  description = 'King Edward Travel — All for Egypt. Official Egyptian travel agency since 2005 (License 1311): luxury 5* Nile cruises, Cairo & Giza Pyramids tours, Luxor, Aswan, Red Sea resorts, and private A/C transport fleet.',
+  keywords = 'King Edward Travel, Egypt tours, Nile cruise Luxor Aswan, Cairo Pyramids tour, Sharm El Sheikh diving, Hurghada holidays, Abu Simbel tour, Egypt travel agency License 1311, private Egypt transfers',
+  canonicalPath = Astro.url.pathname,
+  ogImage = '/assets/images/egypt/pyramids-giza.jpg',
+  ogType = 'website',
+  headerClass = 'main-header style-one common-header',
+  navActive = 'home',
+  mainHeading,
+  subHeading,
+  showBreadcrumb = true,
+  extraJsonLd,
+} = Astro.props;
+
+const cleanPath = canonicalPath === '/' ? '' : canonicalPath.replace(/\.html$/, '');
+const canonicalUrl = `${SITE_URL}${cleanPath || '/'}`;
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+
+const travelAgencySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  '@id': `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  alternateName: `${SITE_NAME} — ${SITE_SLOGAN}`,
+  url: SITE_URL,
+  logo: `${SITE_URL}/assets/images/logo.png`,
+  image: fullOgImage,
+  description,
+  foundingDate: '2005',
+  telephone: SITE_PHONE_1,
+  email: SITE_EMAIL_INFO,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE_ADDRESS,
+    addressLocality: 'Cairo',
+    addressCountry: 'EG',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Egypt',
+  },
+  AggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '1850',
+    bestRating: '5',
+  },
+};
+
+const breadcrumbSchema = showBreadcrumb && subHeading ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${SITE_URL}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: subHeading,
+      item: canonicalUrl,
+    },
+  ],
+} : null;
+
+const jsonLdPayloads = [
+  travelAgencySchema,
+  ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+  ...(Array.isArray(extraJsonLd) ? extraJsonLd : extraJsonLd ? [extraJsonLd] : []),
+];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content={description}>
+    <meta name="keywords" content={keywords}>
+    <meta name="author" content="King Edward Travel">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#094174">
+
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl}>
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content={ogType}>
+    <meta property="og:site_name" content={`${SITE_NAME} — ${SITE_SLOGAN}`}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:url" content={canonicalUrl}>
+    <meta property="og:image" content={fullOgImage}>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={fullOgImage}>
+
+    <!-- Structured Data (JSON-LD) -->
+    {jsonLdPayloads.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+
+    <!-- Fav Icon -->
+    <link rel="icon" href="/assets/images/fav-icon.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="/assets/css/flaticon_save_us.css" rel="stylesheet">  
+    <link href="/assets/fonts/flaticon.css" rel="stylesheet">
+    <link href="/assets/css/owl.css" rel="stylesheet">
+    <link href="/assets/css/slick-theme.css" rel="stylesheet">
+    <link href="/assets/css/slick.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="/assets/css/progresscircle.css" rel="stylesheet">
+    <link href="/assets/css/animate.css" rel="stylesheet">
+    <link href="/assets/css/color.css" rel="stylesheet">
+    <link href="/assets/css/nice-select.css" rel="stylesheet">
+    <link href="/assets/css/global.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/swiper.min.css" rel="stylesheet">
+    <link href="/assets/css/responsive.css" rel="stylesheet">
+    <style is:global>
+        /* King Edward crown mark is square — override wide-logo slots (layout only, logo untouched) */
+        .main-header .logo-box .logo a{width:auto !important;height:auto !important;}
+        .main-header .logo-box .logo img{height:62px !important;width:auto !important;max-width:none;}
+        .sticky-header .logo-box .logo img{height:52px !important;width:auto !important;}
+        .footer__logo img{max-width:190px !important;width:100%;height:auto;}
+        .nav-logo img{height:55px !important;width:auto !important;}
+        .offcanvas-title img{height:60px !important;width:auto !important;}
+        .testimonial-initial{display:flex !important;align-items:center;justify-content:center;background:#0f2a5c;color:#E9C379;font-size:32px;font-weight:700;font-family:Georgia,serif;}
+        .tour-guid-image{display:flex !important;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef4fa,#dfe9f4) !important;min-height:150px;}
+        .team-initial{width:92px !important;height:92px !important;border-radius:50% !important;font-size:38px !important;}
+        .trust-badge{display:flex !important;align-items:center;gap:8px;height:auto !important;font-weight:600;color:#0f2a5c;white-space:nowrap;}
+        .trust-badge i{color:#FE7524;}
+        .service-form-option input[type="search"]::placeholder{color:#242C31;opacity:1;}
+        .service-button button{display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;border-radius:50%;background:#094174;color:#ffffff;font-size:28px;border:none;transition:0.3s;cursor:pointer;flex-shrink:0;}
+        .service-button button:hover{color:#FE7524;}
+        .package-details-right-form .form-label{display:flex;align-items:center;}
+        .package-details-right-form .form-label input{width:100%;font-family:'Source Serif Pro',serif;font-size:15px;font-weight:400;line-height:26px;color:#242C31;}
+
+        /* Live Search Autocomplete Dropdown */
+        .ke-search-autocomplete-wrap {
+          position: relative;
+        }
+        .ke-search-suggestions {
+          position: absolute;
+          top: calc(100% + 18px);
+          left: -35px;
+          width: 390px;
+          max-width: 90vw;
+          max-height: 380px;
+          overflow-y: auto;
+          background: #ffffff;
+          border-radius: 18px;
+          box-shadow: 0 18px 45px rgba(9, 65, 116, 0.18);
+          border: 1px solid rgba(9, 65, 116, 0.08);
+          padding: 10px;
+          z-index: 9999;
+          display: none;
+          text-align: left;
+        }
+        .ke-search-suggestions.active {
+          display: block;
+          animation: keFadeIn 0.18s ease-out;
+        }
+        @keyframes keFadeIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .ke-sugg-header {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #777;
+          padding: 6px 12px 4px;
+        }
+        .ke-sugg-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 9px 12px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: background 0.15s ease;
+          text-decoration: none;
+        }
+        .ke-sugg-item:hover,
+        .ke-sugg-item.highlighted {
+          background: #f2f7fc;
+        }
+        .ke-sugg-thumb {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          object-fit: cover;
+          flex-shrink: 0;
+        }
+        .ke-sugg-info {
+          flex: 1;
+          min-width: 0;
+        }
+        .ke-sugg-title {
+          font-family: 'Source Serif Pro', serif;
+          font-size: 16px;
+          font-weight: 600;
+          color: #094174;
+          line-height: 1.25;
+          margin: 0 0 3px 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .ke-sugg-title mark {
+          background: rgba(254, 117, 36, 0.18);
+          color: #FE7524;
+          padding: 0 2px;
+          border-radius: 3px;
+        }
+        .ke-sugg-meta {
+          font-size: 13px;
+          color: #6c757d;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .ke-sugg-badge {
+          display: inline-block;
+          font-size: 11px;
+          font-weight: 600;
+          padding: 2px 8px;
+          border-radius: 20px;
+          background: rgba(254, 117, 36, 0.12);
+          color: #FE7524;
+          flex-shrink: 0;
+        }
+        .ke-sugg-empty {
+          padding: 16px 12px;
+          text-align: center;
+          color: #6c757d;
+          font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxed_wrapper">
+        <SearchPopup />
+        <Header headerClass={headerClass} navActive={navActive} />
+        <MobileMenu />
+        {showBreadcrumb && <Breadcrumb mainHeading={mainHeading} subHeading={subHeading} />}
+        <slot />
+        <Footer />
+    </div>
+
+    <!-- All JavaScript Files-->
+    <script is:inline src="/assets/js/jquery.js"></script>
+    <script is:inline src="/assets/js/popper.min.js"></script>
+    <script is:inline src="/assets/js/bootstrap.min.js"></script>
+    <script is:inline src="/assets/js/fontawesome.min.js"></script>
+    <script is:inline src="/assets/js/all.min.js"></script>
+    <script is:inline src="/assets/js/owl.js"></script>
+    <script is:inline src="/assets/js/wow.js"></script>
+    <script is:inline src="/assets/js/slick.min.js"></script>
+    <script is:inline src="/assets/js/validation.js"></script>
+    <script is:inline src="/assets/js/progresscircle.js"></script>
+    <script is:inline src="/assets/js/scrollbar.js"></script>
+    <script is:inline src="/assets/js/appear.js"></script>
+    <script is:inline src="/assets/js/jquery.nice-select.min.js"></script>
+    <script is:inline src="/assets/js/swiper.min.js"></script>
+    <script is:inline src="/assets/js/parallax.min.js"></script>
+    <script is:inline src="/assets/js/jquery.fancybox.js"></script>
+    <script is:inline src="/assets/js/jquery.magnific-popup.js"></script>
+    <script is:inline src="/assets/js/parallax-scroll.js"></script>
+    <script is:inline src="/assets/js/jquery.paroller.min.js"></script>
+
+    <!-- main-js -->
+    <script is:inline src="/assets/js/script.js"></script>
+    <script is:inline>
+      (function () {
+        const forms = document.querySelectorAll('.ke-quick-inquiry-form');
+        if (!forms.length) return;
+        forms.forEach(function (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const name = (data.get('name') || '').toString().trim();
+            const phone = (data.get('phone') || '').toString().trim();
+            const context = form.getAttribute('data-context') || 'Egypt Travel Question';
+            const subject = (data.get('subject') || context).toString().trim();
+            const message = (data.get('message') || '').toString().trim();
+            const statusBox = form.parentElement ? form.parentElement.querySelector('.ke-quick-inquiry-status') : null;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const origText = submitBtn ? submitBtn.textContent : 'Send now';
+
+            if (submitBtn) {
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Sending...';
+            }
+
+            const summary = [
+              'Hello King Edward Travel (' + context + '),',
+              '• Name: ' + name,
+              '• Phone / WhatsApp: ' + (phone || 'N/A'),
+              '• Subject: ' + subject,
+              '• Message: ' + message
+            ].join('\n');
+
+            const waUrl1 = 'https://wa.me/201094066018?text=' + encodeURIComponent(summary);
+            const waUrl2 = 'https://wa.me/201223635480?text=' + encodeURIComponent(summary);
+            const mailtoUrl = 'mailto:info@kingedwardtravel.com?cc=sales@kingedwardtravel.com&subject=' +
+              encodeURIComponent(subject + ' — ' + name) +
+              '&body=' + encodeURIComponent(summary);
+
+            fetch('https://formsubmit.co/ajax/info@kingedwardtravel.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                _subject: 'King Edward Website (' + context + '): ' + subject,
+                _cc: 'sales@kingedwardtravel.com',
+                name: name,
+                phone: phone || 'N/A',
+                subject: subject,
+                message: message
+              })
+            }).finally(function () {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = origText;
+              }
+            }).catch(function () {});
+
+            if (statusBox) {
+              statusBox.innerHTML =
+                '<div class="alert alert-success" style="border-radius:10px;padding:16px 18px;border-left:5px solid #FE7524;background:#f8fff9;color:#094174;">' +
+                '<div style="font-weight:700;margin-bottom:6px;"><i class="fa-solid fa-circle-check" style="color:#25D366;margin-right:6px;"></i>Thank you, ' + (name || 'Traveler') + '! Your message has been sent.</div>' +
+                '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">' +
+                  '<a href="' + waUrl1 + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;background:#25D366;color:#fff;border-radius:6px;font-weight:600;font-size:13px;text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp (+20 10-940-66018)</a>' +
+                  '<a href="' + waUrl2 + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;background:#1ebe57;color:#fff;border-radius:6px;font-weight:600;font-size:13px;text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp (+20 12-236-35480)</a>' +
+                  '<a href="' + mailtoUrl + '" style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;background:#094174;color:#fff;border-radius:6px;font-weight:600;font-size:13px;text-decoration:none;"><i class="fa-regular fa-envelope"></i> Email App</a>' +
+                '</div>' +
+                '</div>';
+            }
+            form.reset();
+          });
+        });
+      })();
+    </script>
+</body>
+</html>

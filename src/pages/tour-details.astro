@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { KE_FAQS } from '../data/siteData';
+import { SITE_URL } from '../data/siteConfig';
+
+const topFaqs = KE_FAQS.slice(0, 3);
+
+const tourProductSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: 'Classical Egypt & 3 Nights Nile Cruise (8 Days)',
+  description: 'Signature 8-day Egypt itinerary covering the Giza Pyramids, Great Sphinx, Egyptian Museum, Karnak, Valley of the Kings, Edfu, Kom Ombo, and Aswan aboard a 5-star Nile cruise.',
+  touristType: ['Cultural Tourism', 'Luxury Nile Cruise', 'Family & Private Groups'],
+  itinerary: [
+    { '@type': 'City', name: 'Cairo & Giza' },
+    { '@type': 'City', name: 'Luxor' },
+    { '@type': 'City', name: 'Edfu & Kom Ombo' },
+    { '@type': 'City', name: 'Aswan' },
+  ],
+  provider: {
+    '@type': 'TravelAgency',
+    name: 'King Edward Travel',
+    url: SITE_URL,
+  },
+};
+---
+<BaseLayout
+  title="Classical Egypt & 3 Nights 5★ Nile Cruise (8 Days) | King Edward Travel"
+  description="Our signature 8-day Egypt tour: 4 nights in a 5* Cairo hotel plus a 3-night 5* Nile cruise from Aswan to Luxor with private Egyptologist guides and A/C airport transfers."
+  keywords="Classical Egypt 3 nights Nile cruise, 8 days Egypt itinerary, Cairo Luxor Aswan package, 5 star Nile cruise tour, King Edward Travel packages"
+  ogImage="/assets/images/egypt/luxor-temple.jpg"
+  headerClass="main-header style-one common-header"
+  navActive="tours"
+  mainHeading="Classical Egypt & 3 Nights Nile Cruise"
+  subHeading="Tour Details"
+  extraJsonLd={tourProductSchema}
+>
+        <!-- tour package details -->
+        <section class="package-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="package-details-left-container">
+                            <div class="package-tab">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-circle-info"></i> Package Details</button>
+                                      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-file-image"></i> Gallery</button>
+                                      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa-regular fa-file-lines"></i> Policy</button>
+                                    </div>
+                                  </nav>
+                                  <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                                        <div class="pkg-nav-contant">
+                                            <div class="nav-info">
+                                                <p>On Request / <span>best rate guaranteed</span></p>
+                                            </div>
+                                            <div class="nav-list">
+                                                <ul class="tour-nav-info">
+                                                    <li><i class="fa-regular fa-clock"></i> 8 Days / 7 Nights</li>
+                                                    <li><i class="fa-regular fa-user"></i> Private & small groups</li>
+                                                    <li><i class="fa-solid fa-book-open"></i> Place : Egypt</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                                        <div class="pkg-nav-contant">
+                                            <div class="nav-info">
+                                                <p>On Request / <span>best rate guaranteed</span></p>
+                                            </div>
+                                            <div class="nav-list">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/assets/images/egypt/pyramids-giza.jpg" alt="img">
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/egypt/karnak.jpg" alt="img">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                                        <div class="pkg-nav-contant">
+                                            <ul class="pkg-policy">
+                                                <li><strong>Includes:</strong> 4 nights Cairo 5* hotel, 3 nights 5* Nile cruise, licensed Egyptologist guide, all transfers in our A/C fleet via our transport company <a href="https://egyptlimo.com/" target="_blank" rel="noopener">Egypt Limo</a>, domestic flight Cairo–Luxor.</li>
+                                                <li><strong>Excludes:</strong> international flights, Egypt visa fee, entrance extras (e.g. Tutankhamun tomb), tips.</li>
+                                                <li><strong>Booking:</strong> small deposit confirms; balance on arrival (USD/EUR/EGP). Free date change up to 21 days before.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pkg-common-title">
+                                <h4>More Details</h4>
+                            </div>
+                            <p>Our signature tour: stand before the Pyramids of Giza and the Sphinx, descend into Tutankhamun’s tomb in the Valley of the Kings, sail the Nile past Edfu and Kom Ombo to Aswan’s Philae Temple — all with private Egyptologist guides, handpicked 5* hotels and our own air-conditioned fleet.</p>
+
+                            <div class="pkg-list-info">
+                                <ul>
+                                    <li><h6>Destination :</h6> <span>Cairo, Luxor, Edfu, Kom Ombo, Aswan</span></li>
+                                    <li><h6>Departure/Return Location :</h6> <span>Cairo International Airport — meet & assist</span></li>
+                                    <li><h6>Departure Time :</h6> <span>Daily departures, year-round — you choose the date</span></li>
+                                    <li><h6>Return Time :</h6> <span>Day 8 — transfer to Cairo airport for departure</span></li>
+                                </ul>
+                            </div>
+                            <div class="pkg-info-container">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i> 4.9  Accommodation</li>
+                                    <li><i class="fa-solid fa-plane-up"></i> 4.9  Airport </li>
+                                    <li><i class="fa-solid fa-wifi"></i> Wi-fi</li>
+                                    <li><i class="fa-brands fa-servicestack"></i> 4.9  Dinner & Snacks. </li>
+                                </ul>
+                                <ul>
+                                    <li><i class="fa-solid fa-gear"></i> Additional Services</li>
+                                    <li><i class="fa-brands fa-instalod"></i> Insurance</li>
+                                    <li><i class="fa-solid fa-car-side"></i> Transport </li>
+                                </ul>
+                            </div>
+                            <p>Day by day: Cairo (Pyramids, Sphinx, Egyptian Museum, Khan El Khalili) → fly to Luxor (Karnak, Luxor Temple) → embark 3-night cruise (Valley of the Kings, Hatshepsut, Edfu, Kom Ombo) → Aswan (Philae, optional Abu Simbel) → fly back to Cairo. Every transfer, pickup and excursion is handled by King Edward’s own team.</p>
+
+                            <div class="faq-accordion ">
+                                <div class="accordion" id="accordionExample">
+                                    {topFaqs.map((f, idx) => {
+                                      const fi = idx + 1;
+                                      const hid = `headingK${fi}`;
+                                      const cid = `collapseK${fi}`;
+                                      return (
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id={hid}>
+                                                <button class={`accordion-button${fi === 1 ? '' : ' collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#${cid}`} aria-expanded={fi === 1 ? 'true' : 'false'} aria-controls={cid}>
+                                                    {f.q}
+                                                </button>
+                                            </h4>
+                                            <div id={cid} class={`accordion-collapse collapse${fi === 1 ? ' show' : ''}`} aria-labelledby={hid} data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    {f.a}
+                                                </div>
+                                            </div>
+                                        </div>
+                                      );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div class="pkg-common-title">
+                                <h4>More Tour Package :</h4>
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="tour-package-container">
+                                        <div class="activities-image">
+                                            <a href='/tour-guide'><img src="/assets/images/egypt/luxor-temple.jpg" alt="photo"></a>
+                                        </div>
+                                        <div class="activities-content">
+                                            <div class="tour-package-info">
+                                                <div class="rating">
+                                                    <p><i class="fa-solid fa-star"></i> 4.45 (313 Reviews) </p>
+                                                </div>
+                                                <div class="doller">
+                                                    9 Days <span>On Request</span>
+                                                </div>
+                                            </div>
+                                            <a href='/tour-details'>Classical Egypt & 4 Nights Nile Cruise</a>
+                                            <ul>
+                                                <li><i class="flaticon-placeholder"></i> Cairo, Luxor, Aswan</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="tour-package-container">
+                                        <div class="activities-image">
+                                            <a href='/tour-guide'><img src="/assets/images/egypt/hurghada.jpg" alt="photo"></a>
+                                        </div>
+                                        <div class="activities-content">
+                                            <div class="tour-package-info">
+                                                <div class="rating">
+                                                    <p><i class="fa-solid fa-star"></i> 4.45 (313 Reviews) </p>
+                                                </div>
+                                                <div class="doller">
+                                                    10 Days <span>On Request</span>
+                                                </div>
+                                            </div>
+                                            <a href='/tour-details'>Cairo, Hurghada & Nile Cruise</a>
+                                            <ul>
+                                                <li><i class="flaticon-placeholder"></i> Cairo, Hurghada, Nile</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+
+                    <div class="col-lg-4">
+                        <div class="package-details-right-container">
+                            <div class="destination-common-title">
+                                <h4>Book The Package :</h4>
+                            </div>
+
+                            <div class="package-details-right-form">
+                                <form id="pkg-booking-form">
+                                    <div class="form-label">
+                                        <label><i class="fa-solid fa-pencil"></i></label>
+                                        <input type="text" name="name" placeholder="Your name *" required>
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-regular fa-envelope"></i></label>
+                                        <input type="email" name="email" placeholder="Your Email *" required>
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-solid fa-phone"></i></label>
+                                        <input type="tel" name="phone" placeholder="Phone / WhatsApp number">
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-regular fa-calendar"></i></label>
+                                        <input
+                                            type="text"
+                                            name="checkin"
+                                            placeholder="Check - In Date"
+                                            onfocus="this.type='date'; this.showPicker && this.showPicker();"
+                                            onblur="if(!this.value) this.type='text';"
+                                        >
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-regular fa-calendar"></i></label>
+                                        <input
+                                            type="text"
+                                            name="checkout"
+                                            placeholder="Check - Out Date"
+                                            onfocus="this.type='date'; this.showPicker && this.showPicker();"
+                                            onblur="if(!this.value) this.type='text';"
+                                        >
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-regular fa-user"></i></label>
+                                        <input type="number" name="guests" min="1" max="100" placeholder="Number of Travelers">
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-solid fa-pencil"></i></label>
+                                        <input type="number" name="tickets" min="1" max="100" placeholder="Number of Tickets *" required>
+                                    </div>
+                                    <div class="form-label">
+                                        <label><i class="fa-regular fa-circle-question"></i></label>
+                                        <input type="text" name="notes" placeholder="Write your Question / Notes">
+                                    </div>
+                                    <button type="submit">Send Now</button>
+                                    <div id="pkg-booking-alert" style="margin-top:16px;"></div>
+                                </form>
+                                <script is:inline>
+                                  (function() {
+                                    const form = document.getElementById('pkg-booking-form');
+                                    const alertBox = document.getElementById('pkg-booking-alert');
+                                    if (!form || !alertBox) return;
+                                    form.addEventListener('submit', function(e) {
+                                      e.preventDefault();
+                                      const data = new FormData(form);
+                                      const name = (data.get('name') || '').toString().trim();
+                                      const email = (data.get('email') || '').toString().trim();
+                                      const phone = (data.get('phone') || '').toString().trim();
+                                      const checkin = (data.get('checkin') || '').toString().trim();
+                                      const checkout = (data.get('checkout') || '').toString().trim();
+                                      const guests = (data.get('guests') || '').toString().trim();
+                                      const tickets = (data.get('tickets') || '').toString().trim();
+                                      const notes = (data.get('notes') || '').toString().trim();
+
+                                      const summaryLines = [
+                                        'Hello King Edward Travel,',
+                                        'I would like to book: Classical Egypt & 3 Nights Nile Cruise (8 Days)',
+                                        '• Name: ' + name,
+                                        '• Email: ' + email,
+                                        '• Phone: ' + (phone || 'N/A'),
+                                        '• Check-In: ' + (checkin || 'Flexible'),
+                                        '• Check-Out: ' + (checkout || 'Flexible'),
+                                        '• Travelers: ' + (guests || tickets || '1'),
+                                        '• Tickets: ' + (tickets || '1'),
+                                        notes ? ('• Notes: ' + notes) : ''
+                                      ].filter(Boolean).join('\n');
+
+                                      const waUrl = 'https://wa.me/201094066018?text=' + encodeURIComponent(summaryLines);
+                                      const mailtoUrl = 'mailto:info@kingedwardtravel.com?subject=' +
+                                        encodeURIComponent('Tour Booking Request — ' + name) +
+                                        '&body=' + encodeURIComponent(summaryLines);
+
+                                      fetch('https://formsubmit.co/ajax/info@kingedwardtravel.com', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                                        body: JSON.stringify({
+                                          _subject: 'New Tour Booking Request — ' + name,
+                                          tour: 'Classical Egypt & 3 Nights Nile Cruise',
+                                          name: name,
+                                          email: email,
+                                          phone: phone,
+                                          checkin: checkin,
+                                          checkout: checkout,
+                                          travelers: guests,
+                                          tickets: tickets,
+                                          notes: notes
+                                        })
+                                      }).catch(function() {});
+
+                                      alertBox.innerHTML =
+                                        '<div class="alert alert-success" style="margin-top:12px;border-radius:8px;font-size:15px;">' +
+                                        '<strong>Thank you, ' + (name || 'Traveler') + '!</strong><br>' +
+                                        'Your booking request for <em>Classical Egypt &amp; 3 Nights Nile Cruise</em> (' +
+                                        (checkin ? checkin + (checkout ? ' → ' + checkout : '') : 'flexible dates') +
+                                        ', ' + (tickets || '1') + ' ticket(s)) has been prepared for <strong>info@kingedwardtravel.com</strong>.<br>' +
+                                        '<div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">' +
+                                          '<a href="' + waUrl + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#25D366;color:#fff;border-radius:6px;font-weight:600;text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> Send Instantly on WhatsApp (+20 10-940-66018)</a>' +
+                                          '<a href="' + mailtoUrl + '" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#094174;color:#fff;border-radius:6px;font-weight:600;text-decoration:none;"><i class="fa-regular fa-envelope"></i> Send via Email App</a>' +
+                                        '</div>' +
+                                        '</div>';
+                                      form.reset();
+                                    });
+                                  })();
+                                </script>
+                            </div>
+                        </div>
+                    </div>             
+                </div>
+            </div>
+        </section>
+        <!-- tour package details -->
+</BaseLayout>

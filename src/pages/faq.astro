@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { KE_FAQS, KE_TOURS } from '../data/siteData';
+
+const topTours = KE_TOURS.slice(0, 3);
+
+const faqPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: KE_FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+<BaseLayout
+  title="Egypt Travel FAQ — Visa, Best Time to Visit, Nile Cruises & Safety | King Edward Travel"
+  description="Answers to the most common Egypt travel questions: Egypt eVisa on arrival, best months for Cairo & Luxor, 3-night vs 4-night Nile cruise, currency, safety, and Red Sea diving."
+  keywords="Egypt travel FAQ, Egypt visa on arrival, best time to visit Egypt, 3 night vs 4 night Nile cruise, is Egypt safe for tourists, Egypt currency tips"
+  headerClass="main-header style-one common-header"
+  navActive="faq"
+  mainHeading="Everything You Need to Know Before Travelling to Egypt"
+  subHeading="FAQ"
+  extraJsonLd={faqPageSchema}
+>
+        <!-- destination details -->
+        <section class="destination-details faq-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="destination-details-left-container">
+                            <div class="faq-accordion ">
+                                <div class="accordion" id="accordionExample">
+                                    {KE_FAQS.map((f, idx) => {
+                                      const fi = idx + 1;
+                                      const hid = `headingK${fi}`;
+                                      const cid = `collapseK${fi}`;
+                                      return (
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id={hid}>
+                                                <button class={`accordion-button${fi === 1 ? '' : ' collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#${cid}`} aria-expanded={fi === 1 ? 'true' : 'false'} aria-controls={cid}>
+                                                    {f.q}
+                                                </button>
+                                            </h4>
+                                            <div id={cid} class={`accordion-collapse collapse${fi === 1 ? ' show' : ''}`} aria-labelledby={hid} data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    {f.a}
+                                                </div>
+                                            </div>
+                                        </div>
+                                      );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div class="destination-common-title">
+                                <h4>Still curious? Ask us:</h4>
+                            </div>
+                            <div class="destination-form-container">
+                                <form class="ke-quick-inquiry-form" data-context="FAQ Page Question">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" placeholder="Your name *" required>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <input type="tel" name="phone" placeholder="Your phone / WhatsApp *" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" name="subject" placeholder="Your subject" class="subject">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="message" placeholder="Write your Question *" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="submit">Send now</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="ke-quick-inquiry-status" style="margin-top:14px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="destination-details-right-container">
+                            <div class="destination-right-search">
+                                <form action="/tour-package" method="get">
+                                  <input type="text" placeholder="Search Egypt tours..." name="q">
+                                  <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+                            <div class="destination-right-title">
+                                <h4>King Edward Tour List</h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="destination-right-list">
+                                {topTours.map((t) => (
+                                <div class="destination-right-list-content">
+                                    <div class="destination-right-list-image">
+                                        <img src={t.img} alt={t.title}>
+                                    </div>
+                                    <div class="destination-right-list-info">
+                                        <a href='/tour-details'>{t.title}</a>
+                                        <ul>
+                                            <li><i class="fa-solid fa-star"></i>{t.rating} </li>
+                                            <li><span>{t.days}</span><h5> On Request</h5> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+
+                            <div class="destination-right-title">
+                                <h4>Travel Categories</h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="destination-category">
+                                <ul>
+                                    <li><div class="check-mark">
+                                            <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?q=Nile%20Cruise'>Luxury Nile Cruises (06)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Cairo'>Cairo &amp; Giza Pyramids (05)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Hurghada'>Red Sea &amp; Sinai (05)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?location=Luxor'>Luxor &amp; Aswan Temples (06)</a>
+                                    </li>
+                                    <li><div class="check-mark">
+                                        <img src="/assets/images/icons/check.png" alt="check">
+                                        </div>
+                                        <a href='/tour-package?q=Holy%20Family'>Holy Family Trail (02)</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="destination-right-title">
+                                <h4>Follow us </h4>
+                                <div class="destination-right-title-image">
+                                    <img src="/assets/images/shape/title-shape.png" alt="shape">
+                                </div>
+                            </div>
+                            <div class="home-two-banner-media destination-right-media">
+                                <ul>
+                                    <li><a href="#">FB</a></li>
+                                    <li><a href="#">TW</a></li>
+                                    <li><a href="#">LI</a></li>
+                                    <li><a href="#">IN</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- destination details -->
+</BaseLayout>

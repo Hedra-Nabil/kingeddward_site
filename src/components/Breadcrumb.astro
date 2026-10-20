@@ -1,0 +1,18 @@
+---
+export interface Props {
+  mainHeading?: string;
+  subHeading?: string;
+}
+const { mainHeading, subHeading } = Astro.props;
+---
+<!-- common banner -->
+<section class="common-banner">
+    <div class="common-banner-image" style="background: url(/assets/images/banner/common-banner-05.jpg);"></div>
+
+    <div class="common-banner-title">
+        <a href='/'>Home </a>
+        {subHeading && <span>/ {subHeading}</span>}
+        {mainHeading && <h3>{mainHeading}</h3>}
+    </div>
+</section>
+<!-- common banner -->

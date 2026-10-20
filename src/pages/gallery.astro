@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { KE_GALLERY } from '../data/siteData';
+
+const firstRow = KE_GALLERY.slice(0, 7);
+const secondRow = KE_GALLERY.slice(7);
+---
+<BaseLayout
+  title="Egypt Photo & Video Gallery — Pyramids, Nile Cruises & Red Sea | King Edward Travel"
+  description="Experience Egypt in pictures and 3D video: Giza Pyramids flyover, Karnak & Luxor Temple at night, Abu Simbel, Aswan feluccas, sunrise balloons, and Red Sea reefs."
+  keywords="Egypt photo gallery, Giza Pyramids 3D video, Luxor Temple photos, Nile cruise pictures, Sharm El Sheikh Hurghada photos"
+  ogImage="/assets/images/egypt/luxor-balloon.jpg"
+  headerClass="main-header style-one common-header"
+  navActive="gallery"
+  mainHeading="Timeless Egypt in Pictures & Film"
+  subHeading="Gallery"
+>
+        <!-- desire place -->
+        <div class="destination-three gallery-page">
+            <div class="destination-three-slide">
+                {firstRow.map((g) => (
+                <div class="popular-ture-content place-content gallery-content">
+                    <div class="popular-ture-image">
+                        <img src={g.img} alt={g.cap}>
+                    </div>
+                    <div class="popular-ture-overlay place-overlay">
+                      <div class="popular-ture-text place-text gallery-text">
+                        <a href={g.img} class="lightbox-image" data-fancybox="gallery"><i class="fa-regular fa-image"></i></a>
+                      </div>
+                    </div>
+                </div>
+                ))}
+            </div>
+
+            <div class="destination-three-slide">
+                {secondRow.map((g) => (
+                <div class="popular-ture-content place-content gallery-content">
+                    <div class="popular-ture-image">
+                        <img src={g.img} alt={g.cap}>
+                    </div>
+                    <div class="popular-ture-overlay place-overlay">
+                      <div class="popular-ture-text place-text gallery-text">
+                        <a href={g.img} class="lightbox-image" data-fancybox="gallery"><i class="fa-regular fa-image"></i></a>
+                      </div>
+                    </div>
+                </div>
+                ))}
+            </div>
+        </div>
+        <!-- desire place -->
+
+        <!-- gallery video -->
+        <div class="container" style="margin-top:40px;margin-bottom:40px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="align-title">
+                        <h5>Video</h5>
+                        <h3>Giza Pyramid Complex — 3D Flyover</h3>
+                    </div>
+                    <video controls preload="metadata" poster="/assets/images/egypt/pyramids-giza.jpg" style="width:100%;border-radius:12px;">
+                        <source src="/assets/videos/giza-flyover.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <!-- gallery video -->
+</BaseLayout>

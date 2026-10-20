@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { KE_TOURS } from '../data/siteData';
+import { SITE_URL } from '../data/siteConfig';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'King Edward Travel — Egypt Tour Packages & Nile Cruises',
+  itemListElement: KE_TOURS.map((t, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: t.title,
+    description: t.blurb,
+    url: `${SITE_URL}/tour-details`,
+  })),
+};
+---
+<BaseLayout
+  title="Egypt Tour Packages & Luxury 5★ Nile Cruises | King Edward Travel"
+  description="Browse 9 handpicked Egypt tour packages: 3, 4 & 7-night Luxor-Aswan Nile cruises, Cairo & Giza Pyramids, Hurghada & Sharm Red Sea holidays, Holy Family Trail, and Petra."
+  keywords="Egypt tour packages, Nile cruise packages, Classical Egypt tour, Cairo Luxor Aswan tour, Red Sea holiday packages, Holy Family trip Egypt"
+  ogImage="/assets/images/egypt/nile-cruise.jpg"
+  headerClass="main-header style-one common-header"
+  navActive="tours"
+  mainHeading="Handcrafted Egypt Journeys, Planned by Experts"
+  subHeading="Tour Packages"
+  extraJsonLd={itemListSchema}
+>
+        <!-- activites -->
+        <div class="tour-package">
+            <div class="container">
+                <div id="tour-filter-banner" style="display:none;margin-bottom:28px;padding:16px 24px;background:#f0f6fc;border-left:4px solid #FE7524;border-radius:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                    <div id="tour-filter-text" style="color:#094174;font-weight:600;font-size:17px;"></div>
+                    <a href="/tour-package" style="color:#FE7524;font-weight:600;text-decoration:underline;">Show All Tours</a>
+                </div>
+                <div class="row" id="tours-grid">
+                    {KE_TOURS.map((t) => (
+                    <div class="col-lg-4 col-md-6 tour-card-item" data-title={t.title.toLowerCase()} data-loc={t.loc.toLowerCase()} data-blurb={t.blurb.toLowerCase()}>
+                        <div class="tour-package-container">
+                            <div class="activities-image">
+                                <a href='/tour-details'><img src={t.img} alt={t.title}></a>
+                            </div>
+                            <div class="activities-content">
+                                <div class="tour-package-info">
+                                    <div class="rating">
+                                        <p><i class="fa-solid fa-star"></i> {t.rating} </p>
+                                    </div>
+                                    <div class="doller">
+                                        {t.days} <span>On Request</span>
+                                    </div>
+                                </div>
+                                <a href='/tour-details'>{t.title}</a>
+                                <ul>
+                                    <li><i class="flaticon-placeholder"></i> {t.loc}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                    <div id="no-tours-msg" class="col-lg-12" style="display:none;text-align:center;padding:40px 0;">
+                        <h4 style="color:#094174;">No matching tours found</h4>
+                        <p style="margin-top:10px;"><a href="/tour-package" class="btn-1" style="display:inline-block;padding:12px 28px;background:#FE7524;color:#fff;border-radius:8px;">View All Egypt Tours</a></p>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="paigination">
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-arrow-left"></i> Prev</a></li>
+                                <li><a href="#">01</a></li>
+                                <li><a href="#">02</a></li>
+                                <li><a href="#">03</a></li>
+                                <li><a href="#">Next <i class="fa-solid fa-arrow-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- activites -->
+        <script is:inline>
+          (function() {
+            const params = new URLSearchParams(window.location.search);
+            const q = (params.get('q') || '').trim().toLowerCase();
+            const loc = (params.get('location') || '').trim().toLowerCase();
+            const date = (params.get('date') || '').trim();
+            if (!q && !loc && !date) return;
+
+            const cards = document.querySelectorAll('.tour-card-item');
+            let visibleCount = 0;
+            cards.forEach((card) => {
+              const title = card.getAttribute('data-title') || '';
+              const cardLoc = card.getAttribute('data-loc') || '';
+              const blurb = card.getAttribute('data-blurb') || '';
+              const matchesQ = !q || title.includes(q) || cardLoc.includes(q) || blurb.includes(q);
+              const matchesLoc = !loc || cardLoc.includes(loc) || title.includes(loc);
+              if (matchesQ && matchesLoc) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            });
+
+            const banner = document.getElementById('tour-filter-banner');
+            const bannerText = document.getElementById('tour-filter-text');
+            const noMsg = document.getElementById('no-tours-msg');
+            if (banner && bannerText) {
+              const parts = [];
+              if (q) parts.push('Keyword: "' + params.get('q') + '"');
+              if (loc) parts.push('Destination: ' + params.get('location'));
+              if (date) parts.push('Date: ' + date);
+              bannerText.textContent = 'Filtered by ' + parts.join(' · ') + ' (' + visibleCount + ' tour' + (visibleCount === 1 ? '' : 's') + ')';
+              banner.style.display = 'flex';
+            }
+            if (noMsg && visibleCount === 0) {
+              noMsg.style.display = 'block';
+            }
+          })();
+        </script>
+</BaseLayout>
