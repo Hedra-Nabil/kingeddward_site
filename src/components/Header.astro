@@ -46,6 +46,7 @@ const { headerClass = 'main-header style-one', navActive = 'home' } = Astro.prop
                                             <li><a href='/destination-details'>Destination Details</a></li>
                                         </ul>
                                     </li>
+                                    <li><a class={navActive === 'private-transfer' ? 'active' : undefined} href='/private-transfer'>Private Transfer</a></li>
                                     <li><a class={navActive === 'gallery' ? 'active' : undefined} href='/gallery'>Gallery</a></li>
                                     <li><a class={navActive === 'faq' ? 'active' : undefined} href='/faq'>FAQ</a></li>
                                     <li><a class={navActive === 'contact' ? 'active' : undefined} href='/contact'>Contact </a></li>   

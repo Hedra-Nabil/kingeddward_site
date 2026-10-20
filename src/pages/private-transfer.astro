@@ -1,0 +1,500 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GroupBand from '../components/GroupBand.astro';
+import { KE_FLEET } from '../data/siteData';
+import {
+  KE_LIMO_URL,
+  KE_LIMO_NAME,
+  SITE_PHONE_1,
+  SITE_PHONE_2,
+  SITE_EMAIL_INFO,
+} from '../data/siteConfig';
+
+const transferFaqs = [
+  {
+    q: 'How does the EgyptLimo booking widget work?',
+    a: 'Select your trip type (one-way or roundtrip), pickup location, drop-off destination, date, time, and passenger count directly in the search bar above. Once you submit, you will be securely directed to booking.egyptlimo.com to compare live vehicle rates and complete your reservation.',
+  },
+  {
+    q: 'Which airports and cities do you cover across Egypt?',
+    a: 'We provide 24/7 private airport transfers and intercity rides at Cairo International Airport (CAI), Sphinx Airport (SPX), Luxor (LXR), Aswan (ASW), Hurghada (HRG), Sharm El Sheikh (SSH), Borg El Arab / Alexandria (HBE), and Marsa Alam (RMF), plus all hotels, Nile cruise docks, and resorts.',
+  },
+  {
+    q: 'What happens if my flight is delayed?',
+    a: 'Our airport dispatch team monitors your flight number in real time. Your uniformed driver will wait for you at the arrivals hall with a personalized name sign at no extra waiting charge for flight delays.',
+  },
+  {
+    q: 'Can I book large coaches or minibuses for groups and conferences?',
+    a: 'Yes! Alongside private sedans and VIP vans on EgyptLimo, King Edward Travel owns a fleet of 50-seat MAN & Mercedes coaches, 28-seat Mitsubishi minibuses, 25-seat Toyota Coasters, and 16-seat Toyota Hiace vans for groups, corporate events, and shore excursions.',
+  },
+];
+
+const transferJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'King Edward Travel & EgyptLimo Private Transfers',
+  serviceType: 'Private Airport Transfers & Chauffeur Service in Egypt',
+  provider: {
+    '@type': 'TravelAgency',
+    name: 'King Edward Travel',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Egypt',
+  },
+  description:
+    'Book instant private airport transfers, intercity rides, and A/C shuttles across Cairo, Luxor, Aswan, Hurghada, and Sharm El Sheikh powered by EgyptLimo — King Edward Travel’s official transport company.',
+};
+---
+<BaseLayout
+  title="Private Transfer in Egypt — Instant Airport & Hotel Booking | King Edward Travel × EgyptLimo"
+  description="Book private airport transfers and chauffeur-driven A/C vehicles across Cairo, Luxor, Aswan, Hurghada & Sharm El Sheikh with King Edward Travel's official transport company, EgyptLimo."
+  keywords="Private transfer Egypt, Cairo airport transfer, EgyptLimo booking, Hurghada airport shuttle, Sharm El Sheikh private car, Luxor Aswan transfer, King Edward Travel fleet"
+  ogImage="/assets/images/egypt/limo-airport.jpg"
+  headerClass="main-header style-one common-header"
+  navActive="private-transfer"
+  mainHeading="Private Transfers & Airport Shuttles Across Egypt"
+  subHeading="Private Transfer"
+  extraJsonLd={transferJsonLd}
+>
+  <!-- Booking Widget Hero Section -->
+  <section class="ke-transfer-booking-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="align-title" style="margin-bottom: 28px;">
+            <h5>Powered by {KE_LIMO_NAME} · Owned by King Edward Travel</h5>
+            <h3>Book Your Private Transfer Instantly</h3>
+            <p class="ke-transfer-lead">
+              Search one-way or roundtrip journeys across Egypt’s airports, hotels, and resorts. Enjoy live vehicle pricing and secure checkout on <strong>booking.egyptlimo.com</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="ke-widget-card">
+            <div class="ke-widget-badge-bar">
+              <span><i class="fa-solid fa-shield-halved"></i> Official {KE_LIMO_NAME} Partner</span>
+              <span><i class="fa-solid fa-plane-arrival"></i> Meet &amp; Assist at All Egypt Airports</span>
+              <span><i class="fa-solid fa-snowflake"></i> Modern Air-Conditioned Fleet</span>
+              <span><i class="fa-solid fa-lock"></i> Instant Live Pricing &amp; Secure Checkout</span>
+            </div>
+
+            <!-- Official EgyptLimo Booking Widget -->
+            <div class="ke-widget-embed-area">
+              <div id="egyptlimo-booking"></div>
+              <script
+                is:inline
+                src="https://booking.egyptlimo.com/widget.js"
+                data-target="egyptlimo-booking"
+                data-language="en"
+                data-surface="light"
+                data-source="kingedwardtravel"
+                defer
+              ></script>
+            </div>
+
+            <div class="ke-widget-footer-note">
+              <p>
+                <i class="fa-solid fa-circle-info"></i>
+                Select both pickup and drop-off locations from the suggested list. Vehicle selection and payment continue securely on <a href="https://booking.egyptlimo.com" target="_blank" rel="noopener">booking.egyptlimo.com</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (4-Step Journey) -->
+  <section class="category" style="padding-top: 40px; padding-bottom: 70px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="align-title">
+            <h5>Simple &amp; Transparent</h5>
+            <h3>How Your Transfer Booking Works</h3>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="ke-step-card wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1000ms">
+            <div class="ke-step-num">01</div>
+            <div class="ke-step-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h5>Search Your Route</h5>
+            <p>Choose one-way or roundtrip, pickup &amp; drop-off locations, date, time, and number of passengers.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="ke-step-card wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1200ms">
+            <div class="ke-step-num">02</div>
+            <div class="ke-step-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h5>Instant Route Validation</h5>
+            <p>EgyptLimo validates your route in real time and calculates fresh, all-inclusive pricing with no hidden fees.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="ke-step-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1400ms">
+            <div class="ke-step-num">03</div>
+            <div class="ke-step-icon"><i class="fa-solid fa-car-side"></i></div>
+            <h5>Select Your Vehicle</h5>
+            <p>Continue seamlessly to <code>booking.egyptlimo.com</code> to choose your preferred sedan, SUV, van, or minibus.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="ke-step-card wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1600ms">
+            <div class="ke-step-num">04</div>
+            <div class="ke-step-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h5>Secure Confirmation</h5>
+            <p>Complete payment on the secure EgyptLimo domain and receive instant confirmation with 24/7 dispatch support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Our Fleet & Group Transfers -->
+  <section class="home-two-about about-page" style="padding-top: 70px; padding-bottom: 80px;">
+    <div class="home-two-pattern-layer" style="background-image: url(/assets/images/shape/home-about-map.png);"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="common-title">
+            <h5>Our Own Transport Company</h5>
+            <h3>King Edward Fleet &amp; {KE_LIMO_NAME}</h3>
+          </div>
+          <div class="home-two-about-content">
+            <p>
+              Unlike agencies that rely on third-party brokers, <strong>King Edward Travel</strong> owns and operates its own transport fleet and dedicated transfer company, <a href={KE_LIMO_URL} target="_blank" rel="noopener"><strong>{KE_LIMO_NAME}</strong></a>.
+            </p>
+            <p>
+              From solo travelers landing at Cairo International Airport to 50-guest delegations touring Upper Egypt and the Red Sea, every pickup is backed by professional licensed drivers, GPS tracking, and air-conditioned comfort.
+            </p>
+          </div>
+
+          <div class="ke-fleet-grid">
+            {KE_FLEET.map((item) => (
+              <div class="ke-fleet-pill">
+                <i class="fa-solid fa-bus-simple"></i>
+                <div>
+                  <strong>{item.bus}</strong>
+                  <span>{item.seats} · A/C</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="home-two-about-btn" style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
+            <div class="btn-group">
+              <div class="header-link-btn">
+                <a class="btn-1" href="#egyptlimo-booking">Book Transfer Above <span></span></a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <div class="header-link-btn">
+                <a class="btn-1" href="/contact" style="background: #094174;">Request Group Bus Quote <span></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1">
+          <div class="about-right-image about-right-image-top">
+            <img src="/assets/images/egypt/limo-airport.jpg" alt="Egypt Limo private airport transfer" style="border-radius: 16px;">
+          </div>
+          <div class="ke-contact-strip">
+            <h6><i class="fa-solid fa-headset"></i> Need 24/7 Dispatch or Custom Group Fleet?</h6>
+            <p>Call or WhatsApp our Cairo transport desk anytime:</p>
+            <div class="ke-contact-strip-links">
+              <a href={`tel:${SITE_PHONE_1.replace(/\s+/g, '')}`}><i class="fa-solid fa-phone"></i> {SITE_PHONE_1}</a>
+              <a href={`tel:${SITE_PHONE_2.replace(/\s+/g, '')}`}><i class="fa-solid fa-phone"></i> {SITE_PHONE_2}</a>
+              <a href={`mailto:${SITE_EMAIL_INFO}`}><i class="fa-solid fa-envelope"></i> {SITE_EMAIL_INFO}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transfer FAQs -->
+  <section class="destination-details faq-page" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="align-title">
+            <h5>Good to Know</h5>
+            <h3>Private Transfer FAQ</h3>
+          </div>
+        </div>
+        <div class="col-lg-10 offset-lg-1">
+          <div class="faq-accordion">
+            <div class="accordion" id="transferFaqAccordion">
+              {transferFaqs.map((f, idx) => {
+                const fi = idx + 1;
+                const hid = `transferHeading${fi}`;
+                const cid = `transferCollapse${fi}`;
+                return (
+                  <div class="accordion-item">
+                    <h4 class="accordion-header" id={hid}>
+                      <button
+                        class={`accordion-button${fi === 1 ? '' : ' collapsed'}`}
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#${cid}`}
+                        aria-expanded={fi === 1 ? 'true' : 'false'}
+                        aria-controls={cid}
+                      >
+                        {f.q}
+                      </button>
+                    </h4>
+                    <div
+                      id={cid}
+                      class={`accordion-collapse collapse${fi === 1 ? ' show' : ''}`}
+                      aria-labelledby={hid}
+                      data-bs-parent="#transferFaqAccordion"
+                    >
+                      <div class="accordion-body">{f.a}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Band -->
+  <GroupBand />
+
+  <!-- Privacy-safe browser event listener for EgyptLimo widget -->
+  <script is:inline>
+    window.addEventListener('egyptlimo:booking', function (event) {
+      var detail = event && event.detail ? event.detail : null;
+      if (!detail || !detail.type) return;
+
+      if (
+        detail.type === 'egyptlimo:booking:loaded' ||
+        detail.type === 'egyptlimo:booking:search_submitted' ||
+        detail.type === 'egyptlimo:booking:checkout_opened'
+      ) {
+        if (window.analytics && typeof window.analytics.track === 'function') {
+          window.analytics.track(detail.type.replace('egyptlimo:booking:', 'transfer_'), {
+            source: detail.source,
+            retailer: detail.retailer,
+            transfer_type: detail.transfer_type,
+            passengers: detail.passengers,
+          });
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .ke-transfer-booking-section {
+      padding: 80px 0 50px;
+      background: linear-gradient(180deg, #f4f8fc 0%, #ffffff 100%);
+      position: relative;
+    }
+    .ke-transfer-lead {
+      max-width: 720px;
+      margin: 12px auto 0;
+      color: #495057;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .ke-widget-card {
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 20px 55px rgba(9, 65, 116, 0.11);
+      border: 1px solid rgba(9, 65, 116, 0.09);
+      overflow: hidden;
+    }
+    .ke-widget-badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding: 16px 28px;
+      background: #094174;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .ke-widget-badge-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ke-widget-badge-bar i {
+      color: #FE7524;
+    }
+    .ke-widget-embed-area {
+      padding: 32px 28px 24px;
+      min-height: 140px;
+    }
+    .ke-widget-footer-note {
+      padding: 14px 28px;
+      background: #f8fafd;
+      border-top: 1px solid rgba(9, 65, 116, 0.07);
+      font-size: 13.5px;
+      color: #5c6773;
+    }
+    .ke-widget-footer-note p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ke-widget-footer-note i {
+      color: #FE7524;
+    }
+    .ke-widget-footer-note a {
+      color: #094174;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .ke-step-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 30px 24px;
+      height: 100%;
+      position: relative;
+      border: 1px solid rgba(9, 65, 116, 0.08);
+      box-shadow: 0 12px 30px rgba(9, 65, 116, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      margin-bottom: 24px;
+    }
+    .ke-step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(9, 65, 116, 0.12);
+    }
+    .ke-step-num {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 32px;
+      font-weight: 800;
+      color: rgba(9, 65, 116, 0.08);
+      font-family: 'Source Serif Pro', serif;
+      line-height: 1;
+    }
+    .ke-step-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(254, 117, 36, 0.12);
+      color: #FE7524;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .ke-step-card h5 {
+      color: #094174;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+    .ke-step-card p {
+      margin: 0;
+      color: #5c6773;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .ke-step-card code {
+      color: #094174;
+      background: rgba(9, 65, 116, 0.07);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .ke-fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .ke-fleet-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 15px;
+      background: #f5f9fd;
+      border: 1px solid rgba(9, 65, 116, 0.1);
+      border-radius: 12px;
+    }
+    .ke-fleet-pill i {
+      font-size: 20px;
+      color: #FE7524;
+    }
+    .ke-fleet-pill strong {
+      display: block;
+      color: #094174;
+      font-size: 14.5px;
+      line-height: 1.25;
+    }
+    .ke-fleet-pill span {
+      font-size: 12.5px;
+      color: #6c757d;
+    }
+    .ke-contact-strip {
+      margin-top: 20px;
+      padding: 22px 24px;
+      background: #094174;
+      color: #ffffff;
+      border-radius: 16px;
+    }
+    .ke-contact-strip h6 {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .ke-contact-strip h6 i {
+      color: #FE7524;
+      margin-right: 6px;
+    }
+    .ke-contact-strip p {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .ke-contact-strip-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+    }
+    .ke-contact-strip-links a {
+      color: #E9C379;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ke-contact-strip-links a:hover {
+      color: #FE7524;
+    }
+    @media (max-width: 767px) {
+      .ke-transfer-booking-section {
+        padding: 50px 0 35px;
+      }
+      .ke-widget-badge-bar {
+        padding: 14px 18px;
+        font-size: 13px;
+      }
+      .ke-widget-embed-area {
+        padding: 20px 14px;
+      }
+    }
+  </style>
+</BaseLayout>
